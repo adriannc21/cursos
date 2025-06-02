@@ -1,0 +1,23 @@
+.footer{
+    background-color: var(--black);
+}
+.footer .con{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+}
+.footer .logo{
+    width: 10rem;
+}
+.footer .flow{
+    color: var(--white);
+}
+.footer .links{
+    display: flex;
+    gap: 2rem;
+}
+.footer .links a img{
+    width: 1.5rem;
+    filter: invert(1);
+}

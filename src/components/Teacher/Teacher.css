@@ -1,0 +1,31 @@
+.teacher{
+    display: flex;
+    flex-direction: column;
+}
+.teacher .info{
+    display: flex;
+    gap: 1rem;
+}
+.teacher .info .image{
+    width: 6rem;
+    border-radius: 3rem;
+}
+.teacher .info .flow{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.teacher .info .flow .name{
+    font-size: 1rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+.teacher .info .flow .role{
+    font-size: .9rem;
+}
+.teacher .description{
+    font-size: .9rem;
+    margin-top: 1rem;
+    text-align: justify;
+    
+}

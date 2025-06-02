@@ -1,0 +1,33 @@
+.nav{
+    background-color: #ffffffd6;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+.nav .con{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav .logo{
+    width: 10rem;
+}
+.nav .redirs{
+    display: flex;
+    gap: 1rem;
+}
+.nav .redirs .btn-login{
+    border-radius: .5rem;
+    padding: .75rem 1rem;
+    background-color: var(--white);
+    border: 1px solid var(--primary);
+    font-weight: 500;
+}
+.nav .redirs .btn-viewcourses{
+    background-color: var(--primary);
+    border: 1px solid var(--primary);
+    color: var(--white);
+    padding: .75rem 2rem;
+    border-radius: .5rem;
+}

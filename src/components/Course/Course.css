@@ -1,0 +1,62 @@
+.course {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem rgb(167, 167, 167);
+}
+.course .pres {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  height: 12rem;
+  position: relative;
+  padding: 1rem;
+}
+.course .pres img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.4);
+}
+.course .pres p {
+  z-index: 1;
+  color: var(--white);
+}
+.course .pres .title {
+  margin-top: auto;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.course .pres .det {
+  font-size: 0.8rem;
+}
+.course .pres .price {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--primary);
+  width: fit-content;
+  padding: 0.25rem 0.5rem;
+  font-weight: 600;
+}
+.course .description{
+  font-size: .8rem;
+  text-align: center;
+  padding: 1rem 0 0 0;
+}
+.course .btn-buy{
+  background-color: var(--primary);
+  width: fit-content;
+  margin: .5rem auto;
+  padding: .5rem 2rem;
+  color: var(--white);
+  border-radius: 1rem;
+}

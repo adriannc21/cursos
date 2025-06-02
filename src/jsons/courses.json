@@ -1,0 +1,30 @@
+[
+  {
+    "image": "/img-course.webp",
+    "title": "Curso de Modelado 3D",
+    "description": "Aprende modelado desde cero con herramientas modernas.",
+    "price": "99.00",
+    "category": "Modelado 3D"
+  },
+  {
+    "image": "/img-course.webp",
+    "title": "Curso de Modelado 3D",
+    "description": "Aprende modelado desde cero con herramientas modernas.",
+    "price": "99.00",
+    "category": "Modelado 3D"
+  },
+  {
+    "image": "/img-course.webp",
+    "title": "Curso de Modelado 3D",
+    "description": "Aprende modelado desde cero con herramientas modernas.",
+    "price": "99.00",
+    "category": "Modelado 3D"
+  },
+  {
+    "image": "/img-course.webp",
+    "title": "Curso de Modelado 3D",
+    "description": "Aprende modelado desde cero con herramientas modernas.",
+    "price": "99.00",
+    "category": "Modelado 3D"
+  }
+]

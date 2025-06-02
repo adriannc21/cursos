@@ -1,0 +1,203 @@
+.home {
+  background-color: var(--gray);
+}
+.home .presentation {
+  background-image: url(/home-fondo.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 6rem 0;
+}
+.home .presentation .flow {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  color: var(--white);
+  gap: 1rem;
+  margin: auto;
+}
+.home .presentation .flow h1 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+.home .presentation .flow p {
+  font-size: 1rem;
+  font-weight: 300;
+}
+.home .presentation .flow button {
+  color: var(--white);
+  background-color: transparent;
+  border: 1px solid var(--primary);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+.home .presentation .flow button:hover {
+  background-color: var(--primary);
+}
+.home .process {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+  background: linear-gradient(to right, #0f2027, #ea7134);
+  position: relative;
+}
+.home .process .subt1 {
+  color: var(--primary);
+  text-align: center;
+}
+.home .process .subt2 {
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+.home .process .steps {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  position: relative;
+  margin: 3rem 0;
+}
+.home .process .steps .line {
+  position: absolute;
+  top: 55%;
+  width: 65%;
+  background-color: var(--primary);
+  height: 0.25rem;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.home .process .steps .step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 2;
+  flex: 1;
+}
+.home .process .steps .step img {
+  width: 6rem;
+  filter: invert(1);
+}
+.home .process .steps .step p {
+  color: var(--white);
+}
+.home .process .steps .step p span {
+  font-weight: 600;
+}
+.home .process .steps .step .num {
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 2rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.home .process .steps .step .flow {
+  text-align: center;
+  font-size: 0.9rem;
+}
+.home .process .spe {
+  position: absolute;
+  top: 100%;
+  transform: translateY(-50%);
+  background-color: var(--primary);
+  padding: 1rem 3rem;
+  text-align: center;
+  font-size: 1.2rem;
+  color: white;
+  border-radius: 0 2rem 0 2rem;
+}
+.home .process .spe span {
+  font-weight: 600;
+}
+.home .available-courses {
+  padding: 5rem 0;
+}
+.home .available-courses .filter{
+    display: flex;
+    align-items: center;
+}
+.home .available-courses .filter .tit{
+    display: flex;
+    font-size: 1.2rem;
+    margin-right: 3rem;
+}
+.home .available-courses .filter .tit span{
+    font-weight: 600;
+}
+.home .available-courses .filter .tit .r {
+  transform: rotate(90deg);
+  width: 1.5rem;
+  margin-right: .5rem;
+}
+.home .available-courses .filter .categories{
+    display: flex;
+    gap: 1rem;
+}
+.home .available-courses .filter .categories p{
+  border: 2px solid var(--primary);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+.home .available-courses .filter .categories p:hover {
+  background-color: var(--primary);
+  color: var(--white);
+}
+.home .available-courses .list-courses{
+    display: flex;
+    margin-top: 2rem;
+    gap: 2rem;
+}
+.home .list-teachers{
+  padding: 5rem 0;
+  background-color: var(--white);
+}
+.home .list-teachers .title{
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+.home .list-teachers .title span{
+  font-weight: 600;
+}
+.home .redir-ins{
+  padding: 2rem 0;
+}
+.home .redir-ins .con{
+  display: flex;
+  width: 50%;
+  gap: 3rem;
+  align-items: center;
+}
+.home .redir-ins .flow{
+  display: flex;
+  width: 50%;
+}
+.home .redir-ins .btn-redir{
+  color: var(--white);
+  font-size: 1.2rem;
+  background-color: var(--primary);
+  font-weight: 500;
+  height: fit-content;
+  padding: .5rem 3rem;
+  border-radius: 2rem;
+}
+.home .redir-ins .btn-redir span{
+  font-weight: 600;
+}
