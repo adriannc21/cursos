@@ -1,13 +1,13 @@
-.course {
+.component-course {
   display: flex;
+  width: 100%;
   flex-direction: column;
   background-color: var(--white);
-  flex: 1;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem rgb(167, 167, 167);
+  box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem var(--grayshadow);
 }
-.course .pres {
+.component-course .pres {
   display: flex;
   flex-direction: column;
   border-radius: 0.5rem;
@@ -15,8 +15,10 @@
   height: 12rem;
   position: relative;
   padding: 1rem;
+  cursor: pointer;
+  overflow: hidden;
 }
-.course .pres img {
+.component-course .pres img {
   position: absolute;
   top: 0;
   left: 0;
@@ -26,19 +28,46 @@
   z-index: 0;
   filter: brightness(0.4);
 }
-.course .pres p {
+.component-course .pres p {
   z-index: 1;
   color: var(--white);
 }
-.course .pres .title {
+.component-course .pres .trailer-view {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: var(--fondmodal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: opacity 0.5s ease;
+  gap: 0.5rem;
+}
+.component-course .pres:hover .trailer-view {
+  opacity: 1;
+  visibility: visible;
+}
+.component-course .pres .trailer-view .icon-vt {
+  color: var(--white);
+}
+.component-course .pres .trailer-view p {
+  font-weight: 500;
+}
+.component-course .pres .title {
   margin-top: auto;
   font-size: 1rem;
   font-weight: 600;
+  line-height: 1.1;
 }
-.course .pres .det {
+.component-course .pres .det {
   font-size: 0.8rem;
 }
-.course .pres .price {
+.component-course .pres .price {
   margin-top: 0.5rem;
   font-size: 0.8rem;
   border-radius: 0.25rem;
@@ -47,16 +76,260 @@
   padding: 0.25rem 0.5rem;
   font-weight: 600;
 }
-.course .description{
-  font-size: .8rem;
+.component-course .description {
+  font-size: 0.8rem;
   text-align: center;
-  padding: 1rem 0 0 0;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding: 0 2rem;
 }
-.course .btn-buy{
+.component-course .btn-buy {
   background-color: var(--primary);
   width: fit-content;
-  margin: .5rem auto;
-  padding: .5rem 2rem;
+  margin: auto auto 0.5rem auto;
+  padding: 0.5rem 2rem;
   color: var(--white);
-  border-radius: 1rem;
+  border-radius: 0.5rem;
+}
+.component-course-trailer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000b0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+.component-course-trailer .out {
+  background-color: transparent;
+  position: absolute;
+  color: var(--white);
+  top: -2rem;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.component-course-trailer .content {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  background-color: var(--white);
+  width: 50rem;
+  border-radius: 0.5rem;
+}
+.component-course-trailer .content .video-t {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.5rem 0.5rem 0 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+}
+.component-course-trailer .content .video-t iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.component-course-trailer .content .info {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+.component-course-trailer .content .info .redir {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  font-weight: 600;
+  width: fit-content;
+}
+.component-course-trailer .content .info .redir .icon-redir {
+  color: var(--primary);
+}
+.component-course-trailer .content .info .teacher {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.component-course-trailer .content .info .stats {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.component-course-trailer .content .info .stats .time {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.component-course-trailer .content .info .stats .users {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.component-course-trailer .content .info .stats .level {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.component-course-trailer .content .info .stats .val {
+  color: var(--grayopac);
+}
+.component-course-trailer .content .info .stats .icon {
+  color: var(--primary);
+}
+.component-course-trailer .content .info .stats .level .levels {
+  display: flex;
+  gap: 0.25rem;
+  align-items: end;
+}
+.component-course-trailer .content .info .stats .level .basic {
+  height: 0.3rem;
+  width: 3px;
+  background-color: var(--primary);
+}
+.component-course-trailer .content .info .stats .level .inter {
+  height: 0.7rem;
+  width: 3px;
+  background-color: var(--primary);
+}
+.component-course-trailer .content .info .stats .level .max {
+  height: 1rem;
+  width: 3px;
+  background-color: var(--primary);
+}
+.component-course-trailer .content .info .line {
+  width: 100%;
+  height: 1px;
+  background-color: var(--grayborder);
+  margin: 1rem 0;
+}
+.component-course-trailer .content .info .description {
+  font-size: 0.9rem;
+}
+.component-course-trailer .content .info .description .view-more {
+  color: var(--primary);
+  cursor: pointer;
+}
+.component-course-trailer .content .buy-options {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.component-course-trailer .content .buy-options .price {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.component-course-trailer .content .buy-options .price p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+.component-course-trailer .content .buy-options .price span {
+  color: gray;
+  font-size: 0.9rem;
+  text-decoration: line-through;
+}
+.component-course-trailer .content .buy-options .btn-buy {
+  padding: 0.5rem 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--white);
+  border-radius: 0.5rem;
+  background-color: var(--primary);
+}
+@media only screen and (max-width: 100rem) {
+  /* ≤ 1600px */
+}
+@media only screen and (max-width: 75rem) {
+  /* ≤ 1200px */
+  .component-course .pres .title {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 62rem) {
+  /* ≤ 992px  */
+  .component-course-trailer .content {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 48rem) {
+  /* ≤ 768px  */
+}
+@media only screen and (max-width: 36rem) {
+  /* ≤ 576px  */
+  .component-course .pres {
+    padding: 0.5rem;
+    height: 9rem;
+  }
+  .component-course .pres .title {
+    font-size: 0.8rem;
+  }
+  .component-course .description {
+    margin-top: 0.5rem;
+  }
+  .component-course .btn-buy {
+    font-size: 0.8rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    margin-bottom: 0;
+  }
+  .component-course .description {
+    padding: 0;
+  }
+  .component-course-trailer .content {
+    width: calc(100% - 2rem);
+  }
+  .component-course-trailer .content .info {
+    padding: 1rem;
+  }
+  .component-course-trailer .content .info .redir {
+    font-size: 1rem;
+  }
+  .component-course-trailer .content .info .teacher {
+    font-size: 0.8rem;
+  }
+  .component-course-trailer .content .info .stats {
+    font-size: 0.9rem;
+  }
+  .component-course-trailer .content .info .description {
+    font-size: 0.8rem;
+  }
+  .component-course-trailer .content .buy-options .btn-buy {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+  .component-course-trailer .content .buy-options .price p {
+    font-size: 1.2rem;
+  }
+  .component-course-trailer .content .buy-options .price span {
+    font-size: 0.8rem;
+  }
+  .component-course-trailer .content .info .stats .level .basic {
+    height: 0.2rem;
+  }
+  .component-course-trailer .content .info .stats .level .basic {
+    height: 0.2rem;
+  }
+  .component-course-trailer .content .info .stats .level .inter {
+    height: 0.6rem;
+  }
+  .component-course-trailer .content .info .stats .level .max {
+    height: 0.8rem;
+  }
 }

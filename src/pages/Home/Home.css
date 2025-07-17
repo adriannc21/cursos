@@ -1,14 +1,26 @@
-.home {
+.page-home {
   background-color: var(--gray);
 }
-.home .presentation {
-  background-image: url(/home-fondo.webp);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.page-home .presentation {
+  position: relative;
   padding: 6rem 0;
 }
-.home .presentation .flow {
+.page-home .presentation .bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+.page-home .presentation .con {
+  position: relative;
+  z-index: 1;
+}
+.page-home .presentation .flow {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -16,16 +28,15 @@
   gap: 1rem;
   margin: auto;
 }
-.home .presentation .flow h1 {
+.page-home .presentation .flow h1 {
   font-size: 1.5rem;
-  line-height: 1.2;
   font-weight: 600;
 }
-.home .presentation .flow p {
+.page-home .presentation .flow p {
   font-size: 1rem;
   font-weight: 300;
 }
-.home .presentation .flow button {
+.page-home .presentation .flow .btn-insc {
   color: var(--white);
   background-color: transparent;
   border: 1px solid var(--primary);
@@ -35,39 +46,41 @@
   font-size: 0.9rem;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  user-select: none;
 }
-.home .presentation .flow button:hover {
+.page-home .presentation .flow .btn-insc:hover {
   background-color: var(--primary);
 }
-.home .process {
+.page-home .process {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 3rem 0;
-  background: linear-gradient(to right, #0f2027, #ea7134);
+  background: linear-gradient(to right, var(--blueblack) 0%, var(--blueblack) 40%, var(--primary) 100%);
   position: relative;
 }
-.home .process .subt1 {
+.page-home .process .subt1 {
   color: var(--primary);
   text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
-.home .process .subt2 {
+.page-home .process .subt2 {
   color: var(--white);
   font-size: 1rem;
-  font-weight: 600;
   text-align: center;
 }
-.home .process .steps {
+.page-home .process .steps {
   display: flex;
   justify-content: space-between;
   margin: auto;
   position: relative;
   margin: 3rem 0;
 }
-.home .process .steps .line {
+.page-home .process .steps .line {
   position: absolute;
-  top: 55%;
+  top: 8rem;
   width: 65%;
   background-color: var(--primary);
   height: 0.25rem;
@@ -75,7 +88,7 @@
   left: 50%;
   transform: translateX(-50%);
 }
-.home .process .steps .step {
+.page-home .process .steps .step {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,17 +96,15 @@
   z-index: 2;
   flex: 1;
 }
-.home .process .steps .step img {
+.page-home .process .steps .step img {
   width: 6rem;
+  height: 6rem;
   filter: invert(1);
 }
-.home .process .steps .step p {
+.page-home .process .steps .step p {
   color: var(--white);
 }
-.home .process .steps .step p span {
-  font-weight: 600;
-}
-.home .process .steps .step .num {
+.page-home .process .steps .step .num {
   background-color: var(--primary);
   display: flex;
   align-items: center;
@@ -104,11 +115,14 @@
   font-weight: bold;
   font-size: 1.5rem;
 }
-.home .process .steps .step .flow {
+.page-home .process .steps .step .flow {
   text-align: center;
   font-size: 0.9rem;
 }
-.home .process .spe {
+.page-home .process .steps .step .flow span {
+  font-weight: 600;
+}
+.page-home .process .spe {
   position: absolute;
   top: 100%;
   transform: translateY(-50%);
@@ -119,85 +133,259 @@
   color: white;
   border-radius: 0 2rem 0 2rem;
 }
-.home .process .spe span {
+.page-home .process .spe span {
   font-weight: 600;
 }
-.home .available-courses {
+.page-home .available-courses {
   padding: 5rem 0;
+  background-color: var(--white);
 }
-.home .available-courses .filter{
-    display: flex;
-    align-items: center;
+.page-home .available-courses .filter {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
-.home .available-courses .filter .tit{
-    display: flex;
-    font-size: 1.2rem;
-    margin-right: 3rem;
+.page-home .available-courses .filter .tit {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
 }
-.home .available-courses .filter .tit span{
-    font-weight: 600;
+.page-home .available-courses .filter .tit span {
+  font-weight: 600;
 }
-.home .available-courses .filter .tit .r {
-  transform: rotate(90deg);
-  width: 1.5rem;
-  margin-right: .5rem;
+.page-home .available-courses .filter .tit .icon-right {
+  color: var(--primary);
+  margin-right: 0.5rem;
 }
-.home .available-courses .filter .categories{
-    display: flex;
-    gap: 1rem;
+.page-home .available-courses .filter .categories {
+  display: flex;
+  gap: 1rem;
 }
-.home .available-courses .filter .categories p{
+.page-home .available-courses .filter .categories .btn-fil {
   border: 2px solid var(--primary);
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   width: fit-content;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
 }
-.home .available-courses .filter .categories p:hover {
+.page-home .available-courses .filter .categories .btn-fil.selected,
+.page-home .available-courses .filter .categories .btn-fil:hover {
   background-color: var(--primary);
   color: var(--white);
 }
-.home .available-courses .list-courses{
-    display: flex;
-    margin-top: 2rem;
-    gap: 2rem;
+.page-home .available-courses .list {
+  margin-top: 2rem;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
-.home .list-teachers{
+.page-home .available-courses .list.fade-out {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+.page-home .list-teachers {
   padding: 5rem 0;
-  background-color: var(--white);
+  background-color: var(--gray);
 }
-.home .list-teachers .title{
+.page-home .list-teachers .title {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
   font-size: 1.2rem;
   font-weight: 400;
   margin-bottom: 2rem;
 }
-.home .list-teachers .title span{
+.page-home .list-teachers .title .icon-right {
+  color: var(--primary);
+}
+.page-home .list-teachers .title p span {
   font-weight: 600;
 }
-.home .redir-ins{
-  padding: 2rem 0;
+.page-home .list-teachers .list {
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
-.home .redir-ins .con{
-  display: flex;
-  width: 50%;
-  gap: 3rem;
-  align-items: center;
-}
-.home .redir-ins .flow{
-  display: flex;
-  width: 50%;
-}
-.home .redir-ins .btn-redir{
-  color: var(--white);
-  font-size: 1.2rem;
+.page-home .redir-ins {
+  padding: 3rem 0;
   background-color: var(--primary);
+}
+.page-home .redir-ins .con {
+  display: flex;
+  width: 50rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.page-home .redir-ins .flow {
+  display: flex;
+  text-align: center;
+  width: 60%;
+  color: var(--white);
+}
+.page-home .redir-ins .btn-redir {
+  background-color: var(--white);
+  font-size: 1.2rem;
+  color: var(--primary);
   font-weight: 500;
   height: fit-content;
-  padding: .5rem 3rem;
+  padding: 0.5rem 3rem;
   border-radius: 2rem;
+  user-select: none;
 }
-.home .redir-ins .btn-redir span{
+.page-home .redir-ins .btn-redir span {
   font-weight: 600;
+}
+
+@media only screen and (max-width: 100rem) {
+  /* ≤ 1600px */
+}
+@media only screen and (max-width: 75rem) {
+  /* ≤ 1200px */
+}
+@media only screen and (max-width: 62rem) {
+  /* ≤ 992px  */
+  .page-home .presentation .flow {
+    align-items: center;
+    width: 80%;
+    text-align: center;
+  }
+  .page-home .presentation .flow br {
+    display: none;
+  }
+  .page-home .presentation .flow h1 {
+    font-size: 1.2rem;
+  }
+  .page-home .process .steps {
+    gap: 2rem;
+  }
+  .page-home .process .steps .line {
+    top: 7rem;
+  }
+  .page-home .process .steps .step img {
+    width: 5rem;
+    height: 5rem;
+  }
+  .page-home .process .steps .step .flow br {
+    display: none;
+  }
+  .page-home .redir-ins .con {
+    width: 100%;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+@media only screen and (max-width: 48rem) {
+  /* ≤ 768px  */
+  .page-home .process .steps .step .flow {
+    font-size: 0.8rem;
+  }
+  .page-home .process .subt1 {
+    font-size: 1rem;
+  }
+  .page-home .process .spe {
+    font-size: 1rem;
+    padding: 1rem 2rem;
+  }
+  .page-home .available-courses .filter {
+    flex-direction: column;
+    align-items: normal;
+    gap: 1rem;
+  }
+  .page-home .redir-ins .flow {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 36rem) {
+  /* ≤ 576px  */
+  .page-home .presentation {
+    padding: 4rem 0;
+  }
+  .page-home .presentation .flow {
+    width: 90%;
+    gap: 0.5rem;
+  }
+  .page-home .presentation .flow h1 {
+    font-size: 1rem;
+  }
+  .page-home .presentation .flow p {
+    font-size: 0.8rem;
+  }
+  .page-home .presentation .flow .btn-insc {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    font-size: .8rem;
+  }
+  .page-home .process .steps {
+    gap: 1rem;
+  }
+  .page-home .process .steps .step img {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  .page-home .process .steps .step .num {
+    width: 2.3rem;
+    height: 2.3rem;
+    font-size: 1.2rem;
+  }
+  .page-home .process .steps .line {
+    top: 5.5rem;
+  }
+  .page-home .process .spe {
+    font-size: 0.9rem;
+  }
+  .page-home .process .subt2 {
+    font-size: 0.8rem;
+  }
+  .page-home .process .steps {
+    margin: 2rem 0;
+  }
+  .page-home .available-courses {
+    padding: 3rem 0;
+  }
+  .page-home .available-courses .filter .tit {
+    font-size: 1rem;
+  }
+  .page-home .list-teachers .title {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .page-home .available-courses .filter .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .page-home .available-courses .filter .categories p {
+    flex: 0 0 calc((100% - 1rem) / 2);
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .page-home .available-courses .list {
+    margin-top: 1rem;
+  }
+  .page-home .available-courses .filter .categories p:hover {
+    background-color: var(--white);
+    color: var(--black);
+  }
+  .page-home .available-courses .filter .categories p.selected {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+  .page-home .list-teachers {
+    padding: 3rem 0;
+  }
+  .page-home .redir-ins .flow {
+    font-size: 0.8rem;
+  }
+  .page-home .redir-ins .btn-redir {
+    font-size: 0.9rem;
+    padding: 1rem 2rem;
+  }
+  .page-home .available-courses .filter .categories .btn-fil{
+    font-size: .8rem;
+  }
 }

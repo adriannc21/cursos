@@ -1,31 +1,63 @@
-.teacher{
-    display: flex;
-    flex-direction: column;
+.component-teacher {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  height: 100%;
 }
-.teacher .info{
-    display: flex;
-    gap: 1rem;
+.component-teacher .info {
+  display: flex;
+  gap: 1rem;
 }
-.teacher .info .image{
-    width: 6rem;
-    border-radius: 3rem;
+.component-teacher .info .image {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 3rem;
 }
-.teacher .info .flow{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.component-teacher .info .flow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.teacher .info .flow .name{
-    font-size: 1rem;
-    color: var(--primary);
-    font-weight: 600;
+.component-teacher .info .flow .name {
+  font-size: 1rem;
+  color: var(--primary);
+  font-weight: 600;
 }
-.teacher .info .flow .role{
-    font-size: .9rem;
+.component-teacher .info .flow .role {
+  font-size: 0.9rem;
+  color: var(--grayopac);
 }
-.teacher .description{
-    font-size: .9rem;
-    margin-top: 1rem;
-    text-align: justify;
-    
+.component-teacher .description {
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  text-align: justify;
+  color: var(--grayopac);
+}
+
+@media only screen and (max-width: 100rem) {
+  /* ≤ 1600px */
+}
+@media only screen and (max-width: 75rem) {
+  /* ≤ 1200px */
+}
+@media only screen and (max-width: 62rem) {
+  /* ≤ 992px  */
+}
+@media only screen and (max-width: 48rem) {
+  /* ≤ 768px  */
+}
+@media only screen and (max-width: 36rem) {
+  /* ≤ 576px  */
+  .component-teacher {
+    padding: 1rem;
+  }
+  .component-teacher .description {
+    font-size: 0.8rem;
+  }
+  .component-teacher .info .flow .name,
+  .component-teacher .info .flow .role {
+    font-size: 0.8rem;
+  }
 }

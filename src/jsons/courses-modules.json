@@ -1,0 +1,103 @@
+[
+  {
+    "id_module": 1,
+    "id_course": 1,
+    "title": "Intro",
+    "url": "intro",
+    "sessions": [
+      { "name": "Bienvenida", "duration": "3 min", "video": "https://youtu.be/bdF68B_2PJE" },
+      { "name": "¿Qué es la impresión 3D?", "duration": "7 min", "video": "https://youtu.be/dREtPFx0a2M" }
+    ]
+  },
+  {
+    "id_module": 2,
+    "id_course": 1,
+    "title": "Fundamentos",
+    "url": "mod1",
+    "sessions": [{ "name": "Materiales de impresión", "duration": "10 min", "video": "https://youtu.be/bdF68B_2PJE" }]
+  },
+  {
+    "id_module": 3,
+    "id_course": 1,
+    "title": "Software de laminado",
+    "url": "mod2",
+    "sessions": [{ "name": "Uso de Cura", "duration": "8 min", "video": "https://youtu.be/bdF68B_2PJE" }]
+  },
+  {
+    "id_module": 4,
+    "id_course": 1,
+    "title": "Impresión en FDM",
+    "url": "mod3",
+    "sessions": [
+      { "name": "Configuración de la impresora", "duration": "12 min", "video": "https://youtu.be/bdF68B_2PJE" }
+    ]
+  },
+  {
+    "id_module": 5,
+    "id_course": 1,
+    "title": "Post-procesado",
+    "url": "mod4",
+    "sessions": [{ "name": "Limpieza y acabados", "duration": "6 min", "video": "https://youtu.be/bdF68B_2PJE" }]
+  },
+  {
+    "id_module": 6,
+    "id_course": 1,
+    "title": "Impresión en resina",
+    "url": "mod5",
+    "sessions": [{ "name": "Uso de impresora SLA", "duration": "10 min", "video": "https://youtu.be/bdF68B_2PJE" }]
+  },
+  {
+    "id_module": 1,
+    "id_course": 2,
+    "title": "Introducción a Fusion 360",
+    "url": "intro-fusion",
+    "sessions": [
+      {
+        "name": "Instalación del software",
+        "duration": "5 min",
+        "video": "https://youtu.be/bdF68B_2PJE"
+      },
+      {
+        "name": "Interfaz y herramientas básicas",
+        "duration": "12 min",
+        "video": "https://youtu.be/bdF68B_2PJE"
+      }
+    ]
+  },
+  {
+    "id_module": 2,
+    "id_course": 2,
+    "title": "Modelado paramétrico",
+    "url": "modelado-parametrico",
+    "sessions": [
+      {
+        "name": "Sketch y restricciones",
+        "duration": "10 min",
+        "video": "https://youtu.be/bdF68B_2PJE"
+      },
+      {
+        "name": "Operaciones 3D básicas",
+        "duration": "8 min",
+        "video": "https://youtu.be/bdF68B_2PJE"
+      }
+    ]
+  },
+  {
+    "id_module": 3,
+    "id_course": 2,
+    "title": "Montajes y ensambles",
+    "url": "ensambles",
+    "sessions": [
+      {
+        "name": "Importar componentes",
+        "duration": "7 min",
+        "video": "https://youtu.be/bdF68B_2PJE"
+      },
+      {
+        "name": "Joints y relaciones",
+        "duration": "9 min",
+        "video": "https://youtu.be/bdF68B_2PJE"
+      }
+    ]
+  }
+]

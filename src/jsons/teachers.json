@@ -1,30 +1,30 @@
 [
   {
-    "image": "/profile.jpg",
+    "image": "/profile.webp",
     "name": "Ana Torres",
     "role": "Especialista en Marketing Digital",
     "description": "Más de 10 años de experiencia enseñando estrategias digitales. Ha liderado campañas exitosas en múltiples industrias, enfocándose en SEO, publicidad pagada y contenido de valor. Su enfoque pedagógico garantiza que los alumnos apliquen lo aprendido desde el primer día."
   },
   {
-    "image": "/profile.jpg",
+    "image": "/profile.webp",
     "name": "Luis García",
     "role": "Diseñador UX",
     "description": "Ha trabajado con agencias internacionales desarrollando interfaces. Domina herramientas como Figma, Adobe XD y Sketch, con una visión centrada en el usuario. Su trayectoria incluye proyectos de alto impacto en sectores financieros, educativos y tecnológicos."
   },
   {
-    "image": "/profile.jpg",
+    "image": "/profile.webp",
     "name": "Carmen Vega",
     "role": "Desarrolladora Frontend",
     "description": "Experta en React y Vue.js con enfoque en componentes reutilizables. Colabora en proyectos de código abierto y es mentora en comunidades de tecnología. Además, ha impartido talleres en conferencias enfocadas en desarrollo web moderno y accesibilidad digital."
   },
   {
-    "image": "/profile.jpg",
+    "image": "/profile.webp",
     "name": "Carmen Vega",
     "role": "Desarrolladora Frontend",
     "description": "Experta en React y Vue.js con enfoque en componentes reutilizables. Colabora en proyectos de código abierto y es mentora en comunidades de tecnología. Además, ha impartido talleres en conferencias enfocadas en desarrollo web moderno y accesibilidad digital."
   },
   {
-    "image": "/profile.jpg",
+    "image": "/profile.webp",
     "name": "Carmen Vega",
     "role": "Desarrolladora Frontend",
     "description": "Experta en React y Vue.js con enfoque en componentes reutilizables. Colabora en proyectos de código abierto y es mentora en comunidades de tecnología. Además, ha impartido talleres en conferencias enfocadas en desarrollo web moderno y accesibilidad digital."

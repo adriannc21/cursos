@@ -1,0 +1,14 @@
+[
+  {
+    "photo": "/JENNIFER-3.webp",
+    "name": "Jennifer Wong",
+    "specialty": "Magíster en Gestión y Políticas de Innovación y Tecnología",
+    "description": "Magíster por la PUCP con más de 12 años de experiencia en la gestión estratégica y operativa de laboratorios de manufactura digital. Promueve la formación académica, la innovación en procesos de fabricación digital y el desarrollo de proyectos tecnológicos interdisciplinarios. Es docente en la PUCP y ha liderado iniciativas financiadas por fondos nacionales e internacionales orientadas a incorporar tecnologías emergentes en sectores como la educación, el diseño de productos y la salud. También ha contribuido en publicaciones académicas sobre transformación tecnológica y educativa, consolidando su compromiso con la investigación y el impacto social."
+  },
+  {
+    "photo": "/ROBERTO-3.webp",
+    "name": "Roberto Raez",
+    "specialty": "Ingeniero Mecatrónico",
+    "description": "Ingeniero Mecatrónico por la PUCP y CTO de Inka Makers, empresa dedicada al desarrollo de soluciones de diseño y fabricación digital. Tiene más de 8 años de experiencia como maker, especializado en diseño, manufactura digital y mantenimiento de tecnologías de impresión 3D. Actualmente se desempeña como pre-docente en la Facultad de Ingeniería de la PUCP. Ha participado en proyectos multidisciplinarios en robótica social y realidad virtual, desarrollando soluciones tecnológicas e implementando herramientas innovadoras en contextos educativos y profesionales."
+  }
+]

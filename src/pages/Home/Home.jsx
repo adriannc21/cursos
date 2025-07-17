@@ -1,146 +1,245 @@
-import Course from "@components/Course/Course";
-import DataTeachers from "@src/jsons/teachers.json";
-import Carrusel from "@components/Carrusel/Carrusel";
 import "./Home.css";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import CarruselTeachers from "@components/CarruselTeachers/CarruselTeachers";
+import ListShortCourses from "@components/ListShortCourses/ListShortCourses";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 
 function Home() {
+  const { t } = useTranslation();
+  const [teachers, setTeachers] = useState([]);
+  const [courses, setCourses] = useState([]);
+  const [isFading, setIsFading] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [loadingCourses, setLoadingCourses] = useState(true);
+  const [loadingTeachers, setLoadingTeachers] = useState(true);
+
+  const categories = Array.isArray(courses) ? [...new Set(courses.map((c) => c?.category_name).filter(Boolean))] : [];
+
+  const filteredCourses = Array.isArray(courses)
+    ? selectedCategory
+      ? courses.filter((course) => course?.category_name === selectedCategory)
+      : courses
+    : [];
+
+  const handleFilterClick = (category) => {
+    if (category === selectedCategory) return;
+    setIsFading(true);
+    setTimeout(() => {
+      setSelectedCategory(category);
+      setIsFading(false);
+    }, 300);
+  };
+
+  useEffect(() => {
+    const fetchTeachers = async () => {
+      try {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/teachers/list`, {
+          headers: { "Api-Key": import.meta.env.VITE_API_KEY },
+        });
+        const result = await res.json();
+        if (Array.isArray(result?.data)) {
+          setTeachers(result.data);
+        } else {
+          console.warn("Datos de docentes no válidos:", result);
+          setTeachers([]);
+        }
+      } catch (err) {
+        console.error("Error cargando docentes:", err);
+        setTeachers([]);
+      } finally {
+        setLoadingTeachers(false);
+      }
+    };
+
+    const fetchCourses = async () => {
+      try {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/courses/latest`, {
+          headers: { "Api-Key": import.meta.env.VITE_API_KEY },
+        });
+        const result = await res.json();
+        if (Array.isArray(result?.data)) {
+          setCourses(result.data);
+        } else {
+          console.warn("Datos de cursos no válidos:", result);
+          setCourses([]);
+        }
+      } catch (err) {
+        console.error("Error cargando cursos:", err);
+        setCourses([]);
+      } finally {
+        setLoadingCourses(false);
+      }
+    };
+
+    fetchTeachers();
+    fetchCourses();
+  }, []);
+
   return (
-    <>
-      <div className="home">
-        <div className="presentation">
-          <div className="con">
-            <div className="flow">
-              <h1>
-                Potencia tus conocimientos
-                <br /> y aprende con los mejores.
-              </h1>
-              <p>
-                En K3D Lab encontrarás cursos con contenido
-                <br /> de calidad, dictados por expertos reconocidos
-                <br /> en el mundo de la tecnología 3D.
-              </p>
-              <button>Inscríbete ahora</button>
-            </div>
-          </div>
-        </div>
-
-        <div className="process">
-          <div className="con">
-            <p className="subt1">TU APRENDIZAJE A OTRO NIVEL</p>
-            <p className="subt2">¿Cómo inscribirte a un cursod e K3D Lab?</p>
-
-            <div className="steps">
-              <span className="line"></span>
-              <div className="step">
-                <img src="/step1.webp" alt="" />
-                <p className="num">1</p>
-                <p className="flow">
-                  <span>Elige el curso que deseas aprender</span>
-                  <br />
-                  Lee detalladamente de que trata cada
-                  <br /> uno para que tomes la decisión correcta.
-                </p>
-              </div>
-              <div className="step">
-                <img src="/step2.webp" alt="" />
-                <p className="num">2</p>
-                <p className="flow">
-                  <span>Regístrate</span>
-                  <br />
-                  con tus datos o con
-                  <br /> tu cuenta de Gmail.
-                </p>
-              </div>
-              <div className="step">
-                <img src="/step3.webp" alt="" />
-                <p className="num">3</p>
-                <p className="flow">
-                  <span>Realiza el pago del curso</span>
-                  <br />
-                  A continuación obtendrás
-                  <br /> acceso a todo el material.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="spe">
-            Lorem ipsum <span>dolor sit amet</span>
-          </div>
-        </div>
-
-        <div className="available-courses">
-          <div className="con">
-            <div className="filter">
-              <div className="tit">
-                <img className="r" src="/icon-up.webp" alt="" />
-                <p>
-                  Cursos <span>Disponibles</span>
-                </p>
-              </div>
-              <div className="categories">
-                <p>Categoria1</p>
-                <p>Categoria2</p>
-                <p>Categoria3</p>
-                <p>Categoria4</p>
-              </div>
-            </div>
-            <div className="list-courses">
-              <Course
-                image="/img-course.webp"
-                title="Curso de Modelado 3D"
-                description="Aprende modelado desde cero con herramientas modernas."
-                price="99.00"
-              />
-              <Course
-                image="/img-course.webp"
-                title="Curso de Modelado 3D"
-                description="Aprende modelado desde cero con herramientas modernas."
-                price="99.00"
-              />
-              <Course
-                image="/img-course.webp"
-                title="Curso de Modelado 3D"
-                description="Aprende modelado desde cero con herramientas modernas."
-                price="99.00"
-              />
-              <Course
-                image="/img-course.webp"
-                title="Curso de Modelado 3D"
-                description="Aprende modelado desde cero con herramientas modernas."
-                price="99.00"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="list-teachers">
-          <div className="con">
-            <h1 className="title">
-              Nuestros <span>Docentes</span>
+    <div className="page-home">
+      <Helmet>
+        <link rel="preload" as="image" href="/fondo-home-com.webp" type="image/webp" />
+      </Helmet>
+      <div className="presentation">
+        <img
+          src="/fondo-home-com.webp"
+          alt="Fondo"
+          className="bg-image"
+          width="1920"
+          height="1080"
+          fetchpriority="high"
+        />
+        <div className="con">
+          <div className="flow">
+            <h1>
+              {t("home.home1_title_line1")}
+              <br />
+              {t("home.home1_title_line2")}
             </h1>
-            <div className="list">
-              <Carrusel
-                teachers={DataTeachers}
-                visibleCount={3}
-                intervalSeconds={1}
-                gapRem={5}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="redir-ins">
-          <div className="con">
-            <p className="flow">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
-              impedit adipisci, quis animi. Dicta saepe, ex vel,
+            <p>
+              {t("home.home1_subt_line1")}
+              <br />
+              {t("home.home1_subt_line2")}
+              <br />
+              {t("home.home1_subt_line3")}
             </p>
-            <a className="btn-redir" href="#">
-              ¡Inscríbete <span>ahora!</span>
-            </a>
+            <Link to="/iniciar-sesion" className="btn-insc">
+              {t("home.home1_btn")}
+            </Link>
           </div>
         </div>
       </div>
-    </>
+
+      <div className="process">
+        <div className="con">
+          <p className="subt1">{t("home.home2_title")}</p>
+          <p className="subt2">{t("home.home2_subt")}</p>
+          <div className="steps">
+            <span className="line"></span>
+
+            <div className="step">
+              <img src="/icons/icon-desktop-v2.webp" width="96" height="96" alt="icon" />
+              <p className="num">1</p>
+              <p className="flow">
+                <span>{t("home.home2_step1_line1")}</span>
+                <br />
+                {t("home.home2_step1_line2")}
+                <br />
+                {t("home.home2_step1_line3")}
+              </p>
+            </div>
+
+            <div className="step">
+              <img src="/icons/icon-form-v2.webp" width="96" height="96" alt="icon" />
+              <p className="num">2</p>
+              <p className="flow">
+                <span>{t("home.home2_step2_line1")}</span>
+                <br />
+                {t("home.home2_step2_line2")}
+                <br />
+                {t("home.home2_step2_line3")}
+              </p>
+            </div>
+
+            <div className="step">
+              <img src="/icons/icon-cards-v2.webp" width="96" height="96" alt="icon" />
+              <p className="num">3</p>
+              <p className="flow">
+                <span>{t("home.home2_step3_line1")}</span>
+                <br />
+                {t("home.home2_step3_line2")}
+                <br />
+                {t("home.home2_step3_line3")}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="spe">
+          {t("home.home2_present_line1")} <span>{t("home.home2_present_line2")}</span>
+        </div>
+      </div>
+
+      <div className="available-courses">
+        <div className="con">
+          <div className="filter">
+            <div className="tit">
+              <FontAwesomeIcon className="icon-right" icon={faChevronRight} />
+              <p>
+                {t("home.home3_title_line1")} <span>{t("home.home3_title_line2")}</span>
+              </p>
+            </div>
+
+            <div className="categories">
+              <p className={`btn-fil ${!selectedCategory ? "selected" : ""}`} onClick={() => handleFilterClick("")}>
+                {t("home.home3_all")}
+              </p>
+              {categories.length > 0 &&
+                categories.map((cat) => (
+                  <p
+                    key={cat}
+                    className={`btn-fil ${selectedCategory === cat ? "selected" : ""}`}
+                    onClick={() => handleFilterClick(cat)}
+                  >
+                    {cat}
+                  </p>
+                ))}
+            </div>
+          </div>
+
+          <div className={`list ${isFading ? "fade-out" : ""}`}>
+            {!loadingCourses ? (
+              filteredCourses.length > 0 ? (
+                <ListShortCourses courses={filteredCourses} />
+              ) : (
+                <p>{t("home.home3_no_courses")}</p>
+              )
+            ) : (
+              <p>{t("home.home3_loading_courses")}</p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div className="list-teachers">
+        <div className="con">
+          <div className="title">
+            <FontAwesomeIcon className="icon-right" icon={faChevronRight} />
+            <p>
+              {t("home.home4_title_line1")} <span>{t("home.home4_title_line2")}</span>
+            </p>
+          </div>
+
+          <div className="list">
+            {!loadingTeachers ? (
+              teachers.length > 0 ? (
+                <CarruselTeachers teachers={teachers} visibleCount={2} intervalSeconds={10} gapRem={2} />
+              ) : (
+                <p>{t("home.home4_no_teachers")}</p>
+              )
+            ) : (
+              <p>{t("home.home4_loading_teachers")}</p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div className="redir-ins">
+        <div className="con">
+          <p className="flow">
+            {t("home.home5_cta_text_line1")} <br />
+            {t("home.home5_cta_text_line2")}
+          </p>
+          <Link className="btn-redir" to="/iniciar-sesion">
+            {t("home.home5_cta_btn_line1")} <span>{t("home.home5_cta_btn_line2")}</span>
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }
 

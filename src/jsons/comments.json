@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Andrew Fernandez",
+    "image": "/profile.webp",
+    "stars": 4,
+    "comment": "Excelente curso, aprendí muchísimo sobre impresión 3D desde cero. Los módulos están bien estructurados y cubren desde lo más básico hasta técnicas más avanzadas. Me gustó mucho cómo se explican los distintos tipos de filamento y el mantenimiento de las impresoras. ¡Muy recomendable para quienes empiezan en este mundo! Desde el primer módulo, el contenido fue claro y progresivo, lo que me permitió adquirir confianza rápidamente. Las explicaciones sobre el funcionamiento de las impresoras FDM fueron muy detalladas, y agradezco especialmente los apartados dedicados al cuidado preventivo del equipo, ya que ahora sé cómo mantener mi impresora funcionando correctamente sin tener que acudir a soporte técnico cada vez que ocurre algo."
+  },
+  {
+    "name": "Lucía Gómez",
+    "image": "/profile.webp",
+    "stars": 4,
+    "comment": "Muy buen contenido y producción del curso. Las clases son claras y bien organizadas. Me hubiera gustado ver más ejemplos prácticos o proyectos guiados paso a paso, especialmente en la parte de modelado. Aun así, es una excelente introducción para quienes buscan aprender impresión 3D."
+  },
+  {
+    "name": "Carlos Méndez",
+    "image": "/profile.webp",
+    "stars": 4,
+    "comment": "El profesor explica súper claro. Me encantó la metodología del curso, sobre todo cómo va introduciendo conceptos complejos de manera gradual. Aprendí no solo a usar mi impresora, sino también a solucionar errores comunes y a optimizar mis diseños. Lo recomiendo al 100%."
+  },
+  {
+    "name": "Fernanda Ruiz",
+    "image": "/profile.webp",
+    "stars":  5,
+    "comment": "Interesante propuesta, pero algunos módulos me parecieron muy básicos, especialmente si ya tienes experiencia previa. Sería bueno incluir secciones avanzadas u opcionales para quienes ya dominan lo esencial. A pesar de eso, valoro el esfuerzo y la claridad del instructor."
+  }
+]

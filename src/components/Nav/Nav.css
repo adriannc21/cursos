@@ -1,33 +1,200 @@
-.nav{
-    background-color: #ffffffd6;
-    padding: 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 3;
+.component-nav {
+  background-color: var(--white);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 5;
 }
-.nav .con{
+.component-nav .con {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.component-nav .inicio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+.component-nav .inicio .logo {
+  width: 10rem;
+}
+.component-nav .language {
+  display: flex;
+  margin-left: auto;
+  margin-right: 1rem;
+  background-color: var(--grayborder);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+.component-nav .language .lang {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+.component-nav .language .lang .flag {
+  display: flex;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  overflow: hidden;
+}
+.component-nav .language .lang .flag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.component-nav .redirs {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.component-nav .redirs .user-menu {
+  position: relative;
+}
+.component-nav .redirs .user-menu .us {
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  height: 2.2rem;
+  border-radius: 50%;
+  width: 2.2rem;
+  cursor: pointer;
+  user-select: none;
+}
+.component-nav .redirs .user-menu .menu {
+  position: absolute;
+  right: 0;
+  top: 5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: var(--white);
+  width: 20rem;
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px 20px 1px #00000047;
+}
+.component-nav .redirs .user-menu .menu .trin {
+  width: 0;
+  height: 0;
+  border-left: 0.75rem solid transparent;
+  border-right: 0.75rem solid transparent;
+  border-bottom: 1.2rem solid var(--white);
+  position: absolute;
+  top: -1rem;
+  right: 0.5rem;
+}
+.component-nav .redirs .user-menu .menu .hello {
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 0 1rem;
+}
+.component-nav .redirs .user-menu .menu .line {
+  height: 1px;
+  background-color: var(--grayborder);
+  width: 100%;
+  margin: 1rem 0;
+}
+.component-nav .redirs .user-menu .menu .menu-item {
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background-color: var(--white);
+  font-size: 1rem;
+  text-align: left;
+}
+.component-nav .redirs .user-menu .menu .menu-item:hover {
+  background-color: var(--gray);
+}
+.component-nav .redirs .btn {
+  border-radius: 0.5rem;
+  border: 2px solid var(--primary);
+  font-size: 0.9rem;
+  height: fit-content;
+}
+.component-nav .redirs .btn.login {
+  padding: 0.5rem 1rem;
+  background-color: var(--white);
+  transition: color 0.3s ease;
+  user-select: none;
+}
+.component-nav .redirs .btn.login:hover {
+  color: var(--primary);
+}
+.component-nav .redirs .btn.login .icon-login {
+  display: none;
+}
+.component-nav .redirs .btn.viewcourses {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  transition: opacity 0.3s ease;
+  user-select: none;
+}
+.component-nav .redirs .btn.viewcourses:hover {
+  opacity: 0.8;
+}
+.component-nav .redirs .btn.viewcourses .icon-book {
+  display: none;
+}
+.component-nav .redirs .btn.shoppingcart {
+  display: flex;
+  width: 2rem;
+  border: 0;
+}
+.component-nav .redirs .btn.shoppingcart img {
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (max-width: 100rem) {
+  /* ≤ 1600px */
+}
+@media only screen and (max-width: 75rem) {
+  /* ≤ 1200px */
+}
+@media only screen and (max-width: 62rem) {
+  /* ≤ 992px  */
+}
+@media only screen and (max-width: 48rem) {
+  /* ≤ 768px  */
+}
+@media only screen and (max-width: 36rem) {
+  /* ≤ 576px  */
+  .component-nav .inicio .logo {
+    width: 7rem;
+    height: 1.2rem;
+  }
+  .component-nav .language{
+    margin-right: .75rem;
+  }
+  .component-nav .redirs {
+    gap: 0.75rem;
+  }
+  .component-nav .redirs .btn.login {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  .component-nav .redirs .btn.login p {
+    display: none;
+  }
+  .component-nav .redirs .btn.login .icon-login {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.nav .logo{
-    width: 10rem;
-}
-.nav .redirs{
+    font-size: 1rem;
+  }
+  .component-nav .redirs .btn.viewcourses {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  .component-nav .redirs .btn.viewcourses p {
+    display: none;
+  }
+  .component-nav .redirs .btn.viewcourses .icon-book {
     display: flex;
-    gap: 1rem;
-}
-.nav .redirs .btn-login{
-    border-radius: .5rem;
-    padding: .75rem 1rem;
-    background-color: var(--white);
-    border: 1px solid var(--primary);
-    font-weight: 500;
-}
-.nav .redirs .btn-viewcourses{
-    background-color: var(--primary);
-    border: 1px solid var(--primary);
-    color: var(--white);
-    padding: .75rem 2rem;
-    border-radius: .5rem;
+    font-size: 1rem;
+  }
 }

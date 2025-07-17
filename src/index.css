@@ -1,10 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
 :root {
   --primary: #ea7134;
   --white: #ffffff;
   --gray: #f0f0f0;
+  --grayborder: #dbdbdb;
+  --grayshadow: #e1e1e1;
+  --grayshadow1: #d9d9d9;
+  --grayopac: #616161;
   --black: #000000;
+  --red: #d33032;
+  --green: #5aa144;
+  --blueblack: #0f2027;
+  --bar: #ffffffab;
+  --star: #ffe920;
+  --fondmodal: #000000b0;
   --font: "Poppins", sans-serif;
 }
 *,
@@ -14,16 +22,24 @@
 }
 a {
   text-decoration: none;
+  color: var(--black);
+  font-weight: 400;
 }
-button{
+button {
   border: none;
   outline: none;
   cursor: pointer;
+  font-family: inherit;
+  background-color: transparent;
+  padding: 0;
+  user-select: none;
 }
 h1,
+h2,
 p {
   margin: 0;
   padding: 0;
+  line-height: 1.2;
 }
 body {
   font-family: var(--font);
@@ -36,3 +52,88 @@ body {
   padding: 0 1rem;
   width: 100%;
 }
+.hover-op {
+  transition: opacity 0.3s ease;
+}
+.hover-op:hover {
+  opacity: 0.8;
+}
+.loader {
+  border: 0.5rem solid var(--white);
+  border-top: 0.5rem solid var(--primary);
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 100rem) {
+  /* ≤ 1600px */
+}
+@media only screen and (max-width: 75rem) {
+  /* ≤ 1200px */
+}
+@media only screen and (max-width: 62rem) {
+  /* ≤ 992px  */
+}
+@media only screen and (max-width: 48rem) {
+  /* ≤ 768px  */
+}
+@media only screen and (max-width: 36rem) {
+  /* ≤ 576px  */
+}
+/* HTML: <div class="loader"></div> */
+/* .loader {
+  width: 65px;
+  aspect-ratio: 1;
+  position: relative;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  border-radius: 50px;
+  box-shadow: 0 0 0 3px inset var(--primary);
+  animation: l4 2.5s infinite;
+}
+.loader:after {
+  animation-delay: -1.25s;
+}
+@keyframes l4 {
+  0% {
+    inset: 0 35px 35px 0;
+  }
+  12.5% {
+    inset: 0 35px 0 0;
+  }
+  25% {
+    inset: 35px 35px 0 0;
+  }
+  37.5% {
+    inset: 35px 0 0 0;
+  }
+  50% {
+    inset: 35px 0 0 35px;
+  }
+  62.5% {
+    inset: 0 0 0 35px;
+  }
+  75% {
+    inset: 0 0 35px 35px;
+  }
+  87.5% {
+    inset: 0 0 35px 0;
+  }
+  100% {
+    inset: 0 35px 35px 0;
+  }
+} */

@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "login": "Sign In",
+    "view_courses": "View Courses",
+    "profile": "Profile",
+    "logout": "Log Out"
+  },
+  "home": {
+    "home1_title_line1": "Boost your knowledge",
+    "home1_title_line2": "and learn with the best.",
+    "home1_subt_line1": "At K3D LAB you'll find courses with",
+    "home1_subt_line2": "high-quality content, taught by renowned experts",
+    "home1_subt_line3": "in the world of 3D technology.",
+    "home1_btn": "Enroll now",
+    "home2_title": "TAKE YOUR LEARNING TO THE NEXT LEVEL",
+    "home2_subt": "How to enroll in a K3D LAB course?",
+    "home2_step1_line1": "Select the course you want to take,",
+    "home2_step1_line2": "read carefully what each one is about",
+    "home2_step1_line3": "so you can make the right choice.",
+    "home2_step2_line1": "Register",
+    "home2_step2_line2": "with your information or",
+    "home2_step2_line3": "your Gmail account.",
+    "home2_step3_line1": "Make the course payment",
+    "home2_step3_line2": "and then you’ll get",
+    "home2_step3_line3": "access to all the materials.",
+    "home2_present_line1": "Explore the world",
+    "home2_present_line2": "of 3D printing",
+    "home3_title_line1": "Available",
+    "home3_title_line2": "Courses",
+    "home3_all": "All",
+    "home3_no_courses": "No courses available in this category.",
+    "home3_loading_courses": "Loading courses...",
+    "home4_title_line1": "Our",
+    "home4_title_line2": "Teachers",
+    "home4_no_teachers": "No teachers available.",
+    "home4_loading_teachers": "Loading teachers...",
+    "home5_cta_text_line1": "Discover the world of 3D technology with our specialized courses.",
+    "home5_cta_text_line2": "Learn at your own pace, with quality content and experts guiding you step by step.",
+    "home5_cta_btn_line1": "Enroll",
+    "home5_cta_btn_line2": "now!"
+  },
+  "home_course": {
+    "view_trailer": "Watch trailer",
+    "category": "Category",
+    "buy": "Buy",
+    "close": "Close",
+    "trailer_notfound": "Trailer not available",
+    "by_course": "By",
+    "view_more": "View more",
+    "buy_now": "Buy now"
+  },
+  "footer": {
+    "all_rights_reserved": "All rights reserved."
+  }
+}

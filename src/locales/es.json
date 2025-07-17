@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "login": "Iniciar Sesión",
+    "view_courses": "Ver Cursos",
+    "profile": "Perfil",
+    "logout": "Salir"
+  },
+  "home": {
+    "home1_title_line1": "Potencia tus conocimientos",
+    "home1_title_line2": "y aprende con los mejores.",
+    "home1_subt_line1": "En K3D LAB encontrarás cursos con contenido",
+    "home1_subt_line2": "de calidad, dictados por expertos reconocidos",
+    "home1_subt_line3": "en el mundo de la tecnología 3D.",
+    "home1_btn": "Inscríbete ahora",
+    "home2_title": "TU APRENDIZAJE A OTRO NIVEL",
+    "home2_subt": "¿Cómo inscribirte a un curso de K3D LAB?",
+    "home2_step1_line1": "Elige el curso que deseas aprender,",
+    "home2_step1_line2": "lee detalladamente de qué trata cada",
+    "home2_step1_line3": "uno para que tomes la decisión correcta.",
+    "home2_step2_line1": "Regístrate",
+    "home2_step2_line2": "con tus datos o con",
+    "home2_step2_line3": "tu cuenta de Gmail.",
+    "home2_step3_line1": "Realiza el pago del curso",
+    "home2_step3_line2": "y a continuación obtendrás",
+    "home2_step3_line3": "acceso a todo el material.",
+    "home2_present_line1": "Explora el mundo",
+    "home2_present_line2": "de la impresión 3D",
+    "home3_title_line1": "Cursos",
+    "home3_title_line2": "disponibles",
+    "home3_all": "Todos",
+    "home3_no_courses": "No hay cursos disponibles en esta categoría.",
+    "home3_loading_courses": "Cargando cursos...",
+    "home4_title_line1": "Nuestros",
+    "home4_title_line2": "Docentes",
+    "home4_no_teachers": "No hay docentes disponibles.",
+    "home4_loading_teachers": "Cargando docentes...",
+    "home5_cta_text_line1": "Descubre el mundo de la tecnología 3D con nuestros cursos especializados.",
+    "home5_cta_text_line2": "Aprende a tu ritmo, con contenido de calidad y expertos que te guiarán paso a paso.",
+    "home5_cta_btn_line1": "¡Inscríbete",
+    "home5_cta_btn_line2": "ahora!"
+  },
+  "home_course": {
+    "view_trailer": "Ver trailer",
+    "category": "Categoría",
+    "buy": "Comprar",
+    "close": "Cerrar",
+    "trailer_notfound": "Trailer no disponible",
+    "by_course": "Por",
+    "view_more": "ver más",
+    "buy_now": "Comprar ahora"
+  },
+  "footer": {
+    "all_rights_reserved": "Todos los derechos reservados."
+  }
+}

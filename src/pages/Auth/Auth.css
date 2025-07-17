@@ -1,0 +1,633 @@
+.page-auth {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fc9652 0%, #63889e 100%);
+}
+.page-auth .auth-container {
+  display: flex;
+  max-width: 90rem;
+  width: 100%;
+  border-radius: 1rem;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+.page-auth .auth-container .login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.page-auth .auth-container .login .container {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  width: 30rem;
+  background-color: var(--white);
+  padding: 3rem;
+  border-radius: 0.5rem;
+}
+.page-auth .auth-container .login .container .title,
+.page-auth .auth-container .register .container .title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.page-auth .auth-container .login .container .flow-ini {
+  font-size: 0.9rem;
+  text-align: center;
+}
+.page-auth .auth-container .login .container .f {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 2rem;
+}
+.page-auth .auth-container .login .container .f .messages {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.page-auth .auth-container .login .container .f input {
+  border: none;
+  outline: none;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  font-size: 1rem;
+  z-index: 1;
+  padding: 1rem 1rem 0 1rem;
+}
+.page-auth .auth-container .login .container .f .email,
+.page-auth .auth-container .login .container .f .password {
+  display: flex;
+  background-color: var(--white);
+  border: 2px solid var(--gray);
+  width: 100%;
+  border-radius: 0.5rem;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  position: relative;
+  height: 3rem;
+}
+.page-auth .auth-container .login .container .f .cam label,
+.page-auth .auth-container .register .container .f .cam label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1rem;
+  font-size: 0.9rem;
+  color: gray;
+  transition: all 0.2s ease;
+  z-index: 1;
+}
+
+.page-auth .auth-container .login .container .f .cam.email.filled label,
+.page-auth .auth-container .login .container .f .cam.password.filled label,
+.page-auth .auth-container .login .container .f .cam.email:focus-within label,
+.page-auth .auth-container .login .container .f .cam.password:focus-within label {
+  top: 0.75rem;
+  font-size: 0.7rem;
+  color: gray;
+}
+.page-auth .auth-container .register .container .f .cam.email.filled label,
+.page-auth .auth-container .register .container .f .cam.email:focus-within label {
+  top: 0.75rem;
+  font-size: 0.7rem;
+  color: gray;
+}
+.page-auth .auth-container .login .container .f .cam.password input {
+  padding: 1rem 3rem 0 1rem;
+}
+.page-auth .auth-container .login .container .f .cam.password input::-ms-reveal,
+.page-auth .auth-container .login .container .f .cam.password input::-ms-clear {
+  display: none;
+}
+.page-auth .auth-container .login .container .password .toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  background-color: transparent;
+}
+.page-auth .auth-container .login .container .password .toggle-password .icon-eye,
+.page-auth .auth-container .register .container .password .toggle-password .icon-eye {
+  user-select: none;
+}
+.page-auth .auth-container .login .container .f .btn-login {
+  width: 100%;
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  transition: opacity 0.3s ease;
+}
+.page-auth .auth-container .login .container .f .btn-login:hover {
+  opacity: 0.8;
+}
+.page-auth .auth-container .login .container .redir-register {
+  display: flex;
+  font-size: 0.9rem;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 1rem;
+  font-weight: 300;
+}
+.page-auth .auth-container .login .container .redir-register .link {
+  color: var(--primary);
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.page-auth .auth-container .register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.page-auth .auth-container .register .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 35rem;
+  width: 100%;
+  background-color: var(--white);
+  padding: 3rem;
+  border-radius: 0.5rem;
+}
+.page-auth .auth-container .register .container .flow-ini {
+  font-size: 0.9rem;
+  text-align: center;
+}
+.page-auth .auth-container .register .container .f {
+  display: flex;
+  width: 100%;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.page-auth .auth-container .register .container .f .cam {
+  display: flex;
+  background-color: var(--white);
+  width: 100%;
+  border-radius: 0.5rem;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  position: relative;
+  height: 3rem;
+  border: 2px solid var(--gray);
+}
+.page-auth .auth-container .register .container .f .cam input {
+  border: none;
+  outline: none;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  font-size: 1rem;
+  z-index: 1;
+  padding: 1rem 1rem 0 1rem;
+}
+.page-auth .auth-container .login .container .f .cam input:-webkit-autofill,
+.page-auth .auth-container .register .container .f .cam input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: inherit !important;
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: transparent !important;
+}
+.page-auth .auth-container .register .container .terms {
+  display: flex;
+  gap: 0.5rem;
+  user-select: none;
+}
+.page-auth .auth-container .register .container .terms input {
+  cursor: pointer;
+}
+.page-auth .auth-container .register .container .terms label {
+  font-size: 0.9rem;
+  font-weight: 300;
+  cursor: pointer;
+}
+.page-auth .auth-container .register .container .f .btn-register {
+  width: 100%;
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  transition: opacity 0.3s ease;
+}
+.page-auth .auth-container .register .container .f .btn-register:disabled,
+.page-auth .auth-container .register .container .f .btn-register:hover {
+  opacity: 0.8;
+}
+.page-auth .auth-container .register .container .redir-login {
+  display: flex;
+  font-size: 0.9rem;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-weight: 300;
+  align-items: center;
+}
+.page-auth .auth-container .register .container .redir-login .link {
+  color: var(--primary);
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.page-auth .auth-container .login.no-visible,
+.page-auth .auth-container .register.no-visible {
+  display: none;
+}
+.page-auth .auth-container .register .container .confirmation-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.page-auth .auth-container .register .container .confirmation-message .title {
+  font-size: 1.2rem;
+  margin: 0;
+}
+.page-auth .auth-container .register .container .confirmation-message .icon-email {
+  background-color: #b7e9b7;
+  padding: 2rem;
+  border-radius: 50%;
+}
+.page-auth .auth-container .register .container .confirmation-message .icon-email .icon {
+  font-size: 5rem;
+  color: var(--green);
+}
+.page-auth .auth-container .register .container .confirmation-message .btn-return {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+}
+
+/* vista de verificacion */
+.page-auth.verify .auth-container {
+  flex-direction: column;
+  gap: 1rem;
+}
+.page-auth.verify .message-verify {
+  background-color: var(--white);
+  max-width: 45rem;
+  width: 100%;
+  padding: 2rem 3rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.page-auth.verify .message-verify .title-ver {
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.page-auth.verify .message-verify .icon-check {
+  background-color: #b7e9b7;
+  padding: 2rem;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+.page-auth.verify .message-verify .icon-check .icon {
+  font-size: 2rem;
+  color: var(--green);
+}
+.page-auth.verify .message-verify .icon-error {
+  background-color: #f17575;
+  padding: 2rem;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+.page-auth.verify .message-verify .icon-error .icon {
+  font-size: 2rem;
+  color: #a32626;
+}
+.page-auth.verify .message-verify .flow {
+  font-size: 0.9rem;
+}
+.page-auth.verify .register-verify {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  padding: 3rem;
+  border-radius: 0.5rem;
+  max-width: 45rem;
+  width: 100%;
+}
+.page-auth.verify .register-verify .title-p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  user-select: none;
+  text-align: center;
+}
+.page-auth.verify .register-verify .f {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.page-auth.verify .register-verify .f .cam {
+  display: flex;
+  background-color: var(--white);
+  border: 2px solid var(--gray);
+  width: 100%;
+  border-radius: 0.5rem;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  position: relative;
+  height: 3rem;
+}
+.page-auth.verify .register-verify .f .cam label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1rem;
+  font-size: 0.9rem;
+  color: gray;
+  transition: all 0.2s ease;
+  z-index: 1;
+}
+.page-auth.verify .register-verify .f .cam select,
+.page-auth.verify .register-verify .f .cam input {
+  border: none;
+  outline: none;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  font-size: 1rem;
+  z-index: 1;
+  padding: 1rem 1rem 0 1rem;
+}
+.page-auth.verify .register-verify .f .cam input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: inherit !important;
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: transparent !important;
+}
+.page-auth.verify .register-verify .f .cam.name.filled label,
+.page-auth.verify .register-verify .f .cam.lastname.filled label,
+.page-auth.verify .register-verify .f .cam.country.filled label,
+.page-auth.verify .register-verify .f .cam.birthday.filled label,
+.page-auth.verify .register-verify .f .cam.password.filled label,
+.page-auth.verify .register-verify .f .cam.name:focus-within label,
+.page-auth.verify .register-verify .f .cam.lastname:focus-within label,
+.page-auth.verify .register-verify .f .cam.country:focus-within label,
+.page-auth.verify .register-verify .f .cam.birthday:focus-within label,
+.page-auth.verify .register-verify .f .cam.password:focus-within label {
+  top: 0.75rem;
+  font-size: 0.7rem;
+  color: gray;
+}
+.page-auth.verify .register-verify .f .cam.country .custom-dropdown {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+}
+.page-auth.verify .register-verify .f .cam.country .custom-dropdown .selected-option {
+  border: none;
+  outline: none;
+  height: 100%;
+  width: 100%;
+  font-size: 1rem;
+  z-index: 1;
+  padding: 1rem 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+}
+.page-auth.verify .register-verify .f .cam.country .custom-dropdown .selected-option .flag {
+  width: 1.4rem;
+  height: 1rem;
+}
+.page-auth.verify .register-verify .f .cam.country .custom-dropdown .dropdown-list {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: -2px;
+  z-index: 2;
+  width: calc(100% + 4px);
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 0.5rem;
+  border: 2px solid var(--gray);
+  background-color: var(--white);
+}
+.page-auth.verify .register-verify .f .cam.country .custom-dropdown .dropdown-list .dropdown-item {
+  padding: 0.5rem 1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  cursor: pointer;
+}
+.page-auth.verify .register-verify .f .cam.country .custom-dropdown .dropdown-list .dropdown-item .flag {
+  width: 1.4rem;
+  height: 1rem;
+}
+.page-auth.verify .register-verify .f .cam.country .custom-dropdown .dropdown-list .dropdown-item:hover {
+  background-color: var(--gray);
+}
+.page-auth.verify .register-verify .f .cam.password input {
+  padding: 1rem 3rem 0 1rem;
+}
+.page-auth.verify .register-verify .f .cam.password input::-ms-reveal,
+.page-auth.verify .register-verify .f .cam.password input::-ms-clear {
+  display: none;
+}
+.page-auth.verify .register-verify .f .cam.birthday input {
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+/* Oculta el texto de placeholder en type="date" si está vacío y sin focus */
+.page-auth.verify .register-verify .f .cam.birthday:not(.filled):not(.focused) input::-webkit-datetime-edit,
+.page-auth.verify .register-verify .f .cam.birthday:not(.filled):not(.focused) input::-webkit-inner-spin-button,
+.page-auth.verify .register-verify .f .cam.birthday:not(.filled):not(.focused) input::-webkit-clear-button {
+  color: transparent;
+}
+.page-auth.verify .register-verify .f .cam.birthday input::-webkit-calendar-picker-indicator {
+  position: relative;
+  left: 0;
+  top: -0.5rem;
+  cursor: pointer;
+}
+.page-auth.verify .register-verify .f .cam.password .toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  background-color: transparent;
+}
+.page-auth.verify .register-verify .f .cam.password .toggle-password .icon-eye {
+  user-select: none;
+}
+.page-auth.verify .register-verify .f .btn-continue {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+.page-auth.verify .register-verify .f .cam.name,
+.page-auth.verify .register-verify .f .cam.lastname,
+.page-auth.verify .register-verify .f .cam.country,
+.page-auth.verify .register-verify .f .cam.birthday,
+.page-auth.verify .register-verify .f .cam.password {
+  width: calc(50% - 0.5rem);
+}
+.page-auth.verify .register-verify .f .validators {
+  display: flex;
+  flex-direction: column;
+}
+.page-auth.verify .register-verify .f .validators .tv {
+  font-size: 0.8rem;
+  font-weight: 500;
+  user-select: none;
+  margin-bottom: 0.5rem;
+}
+.page-auth.verify .register-verify .f .validators .req {
+  font-size: 0.8rem;
+}
+.page-auth.verify .register-verify .f .validators .req .valid {
+  color: #71c171;
+}
+.page-auth.verify .register-verify .f .validators .req .invalid {
+  color: #e75252;
+}
+@media only screen and (max-width: 100rem) {
+  /* ≤ 1600px */
+  .page-auth {
+    padding: 0 1rem;
+  }
+}
+@media only screen and (max-width: 75rem) {
+  /* ≤ 1200px */
+}
+@media only screen and (max-width: 62rem) {
+  /* ≤ 992px  */
+}
+@media only screen and (max-width: 48rem) {
+  /* ≤ 768px  */
+  .page-auth.verify {
+    width: auto;
+    height: auto;
+    padding: 1rem;
+    min-height: 100vh;
+  }
+  .page-auth.verify .register-verify .f .cam.name,
+  .page-auth.verify .register-verify .f .cam.lastname,
+  .page-auth.verify .register-verify .f .cam.country,
+  .page-auth.verify .register-verify .f .cam.birthday,
+  .page-auth.verify .register-verify .f .cam.password {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 36rem) {
+  /* ≤ 576px  */
+  .page-auth .auth-container .register .container,
+  .page-auth .auth-container .login .container {
+    padding: 3rem 2rem;
+    width: 100%;
+  }
+  .page-auth .auth-container .login .container .title,
+  .page-auth .auth-container .register .container .title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    user-select: none;
+  }
+  .page-auth .auth-container .login .container .flow-ini,
+  .page-auth .auth-container .register .container .flow-ini {
+    font-size: 0.8rem;
+  }
+  .page-auth .auth-container .login .container .f {
+    margin-top: 2rem;
+  }
+  .page-auth .auth-container .register .container .logo-movil,
+  .page-auth .auth-container .login .container .logo-movil {
+    display: flex;
+    width: 15rem;
+    margin-bottom: 1rem;
+    user-select: none;
+  }
+  .page-auth .auth-container .register .container .redir-login,
+  .page-auth .auth-container .login .container .redir-register {
+    user-select: none;
+  }
+  .page-auth .auth-container .register .container .confirmation-message {
+    gap: 1rem;
+  }
+  .page-auth .auth-container .register .container .confirmation-message .title {
+    font-size: 1rem;
+  }
+  .page-auth .auth-container .register .container .confirmation-message .icon-email {
+    padding: 1.5rem;
+  }
+  .page-auth .auth-container .register .container .confirmation-message .icon-email .icon {
+    font-size: 3rem;
+  }
+  .page-auth .auth-container .register .container .confirmation-message .btn-return {
+    font-size: 0.8rem;
+  }
+  /* .page-auth.verify {
+    align-items: start;
+  }
+  .page-auth.verify .auth-container {
+    margin-top: 1rem;
+  } */
+  .page-auth.verify .message-verify {
+    padding: 2rem;
+  }
+  .page-auth.verify .message-verify .title-ver {
+    font-size: 1rem;
+  }
+  .page-auth.verify .message-verify .flow {
+    font-size: 0.8rem;
+  }
+  .page-auth.verify .register-verify {
+    padding: 2rem;
+  }
+}

@@ -1,0 +1,303 @@
+.page-viewcoursemodule {
+  padding: 3rem 0;
+}
+.page-viewcoursemodule .container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.page-viewcoursemodule .container .banner {
+  display: flex;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  height: 28rem;
+  background: linear-gradient(135deg, #f0015c, #392fc9, #6631ac);
+}
+.page-viewcoursemodule .container .banner .data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.page-viewcoursemodule .container .banner .data .name-course {
+  font-size: 4rem;
+  font-weight: 600;
+  width: 30rem;
+  color: var(--white);
+}
+.page-viewcoursemodule .container .banner .data .name-teacher {
+  font-size: 1.5rem;
+  color: var(--white);
+}
+.page-viewcoursemodule .container .banner .data .name-teacher span {
+  font-weight: 600;
+}
+.page-viewcoursemodule .container .banner .sec {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: auto;
+  align-items: end;
+}
+.page-viewcoursemodule .container .banner .sec .category {
+  background-color: var(--white);
+  width: fit-content;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+.page-viewcoursemodule .container .banner .sec img {
+  width: 10rem;
+}
+.page-viewcoursemodule .container .c {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+}
+.page-viewcoursemodule .container .c .c1 {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 80%;
+}
+.page-viewcoursemodule .container .c .c1 .module-list {
+  padding: 2rem;
+  border: 1px solid var(--grayborder);
+  border-radius: 0.5rem;
+}
+.page-viewcoursemodule .container .c .c1 .module-list .subt {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.page-viewcoursemodule .container .c .c1 .module-list .modules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.page-viewcoursemodule .container .c .c1 .module-list .modules .module-item {
+  flex: 0 0 calc((100% - 2 * 2rem) / 3);
+  background-color: #fef6ee;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.page-viewcoursemodule .container .c .c1 .module-list .modules .module-item .number {
+  color: var(--primary);
+  font-weight: 600;
+}
+.page-viewcoursemodule .container .c .c1 .module-list .modules .module-item .title {
+  font-weight: 600;
+}
+.page-viewcoursemodule .container .c .c1 .module-list .modules .module-item .progress {
+  margin: 1rem 0 0.5rem 0;
+  font-size: 0.9rem;
+}
+.page-viewcoursemodule .container .c .c1 .module-list .modules .module-item .bar {
+  width: 100%;
+  height: 0.5rem;
+  border-radius: 1rem;
+  background-color: #f8d2b0;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.page-viewcoursemodule .container .c .c1 .module-list .modules .module-item .bar span {
+  display: flex;
+  height: 100%;
+  background-color: var(--primary);
+  border-radius: 1rem 0 0 1rem;
+}
+.page-viewcoursemodule .container .c .c1 .module-list .modules .module-item .btn-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary);
+  padding: 0.5rem 2rem;
+  color: var(--white);
+  border-radius: 1rem;
+  width: 100%;
+}
+.page-viewcoursemodule .container .c .c1 .about {
+  border-radius: 0.5rem;
+  padding: 2rem;
+  border: 1px solid var(--grayborder);
+}
+.page-viewcoursemodule .container .c .c1 .about h1 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.page-viewcoursemodule .container .c .c1 .about .flow {
+  font-size: 0.9rem;
+}
+.page-viewcoursemodule .container .c .c1 .comments-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+.page-viewcoursemodule .container .c .c1 .comments-container .tit {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+.page-viewcoursemodule .container .c .c1 .comments-container .comments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem 2rem;
+}
+.page-viewcoursemodule .container .c .c1 .comments-container .comments .comment {
+  display: flex;
+  flex: 0 0 calc((100% - 1 * 2rem) / 2);
+  gap: 1rem;
+  background-color: var(--white);
+  border-radius: 0.5rem;
+}
+.page-viewcoursemodule .container .c .c1 .comments-container .comments .comment .photo {
+  display: flex;
+  width: 8rem;
+  height: fit-content;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.page-viewcoursemodule .container .c .c1 .comments-container .comments .comment .photo img {
+  width: 100%;
+  height: 100%;
+}
+.page-viewcoursemodule .container .c .c1 .comments-container .comments .comment .dat {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 9rem - 1rem);
+}
+.page-viewcoursemodule .container .c .c1 .comments-container .comments .comment .dat .name {
+  font-weight: 500;
+  color: var(--grayopac);
+}
+.page-viewcoursemodule .container .c .c1 .comments-container .comments .comment .dat .stars .star {
+  color: var(--star);
+}
+.page-viewcoursemodule .container .c .c1 .comments-container .comments .comment .dat .stars .star.active {
+  color: var(--star);
+}
+.page-viewcoursemodule .container .c .c1 .comments-container .comments .comment .dat .flow {
+  font-size: 0.9rem;
+  color: var(--grayopac);
+  display: -webkit-box;
+  -webkit-line-clamp: 5;           
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.page-viewcoursemodule .container .c .c2 {
+  display: flex;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.page-viewcoursemodule .container .c .c2 .teacher-info {
+  border: 1px solid var(--grayborder);
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+.page-viewcoursemodule .container .c .c2 .teacher-info .master {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  align-items: center;
+}
+.page-viewcoursemodule .container .c .c2 .teacher-info .master .photo {
+  display: flex;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.page-viewcoursemodule .container .c .c2 .teacher-info .master .photo img {
+  width: 100%;
+  height: 100%;
+  border-radius: .5rem;
+}
+.page-viewcoursemodule .container .c .c2 .teacher-info .master .name {
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+.page-viewcoursemodule .container .c .c2 .teacher-info .master .tit {
+  font-size: .9rem;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.page-viewcoursemodule .container .c .c2 .teacher-info .master .flow {
+  font-size: 0.9rem;
+  text-align: justify;
+  color: var(--grayopac);
+}
+.page-viewcoursemodule .container .c .c2 .points {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  border: 1px solid var(--grayborder);
+}
+.page-viewcoursemodule .container .c .c2 .points .number {
+  font-size: 3rem;
+  font-weight: 600;
+}
+.page-viewcoursemodule .container .c .c2 .points .stars .star {
+  color: var(--star);
+  font-size: 1.2rem;
+}
+.page-viewcoursemodule .container .c .c2 .points .r {
+  font-weight: 500;
+}
+
+.module-item.locked {
+  opacity: 0.85;
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay-lock {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  padding: 1rem;
+  text-align: center;
+}
+
+.lock-icon {
+  font-size: 28px;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.lock-message {
+  font-size: 14px;
+  color: #444;
+  font-weight: 500;
+}
+.btn-upgrade {
+  margin-top: 10px;
+  padding: 0.5rem 1rem;
+  background-color: #ff5c5c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  z-index: 2;
+}
+
+.btn-upgrade:hover {
+  background-color: #e14b4b;
+}

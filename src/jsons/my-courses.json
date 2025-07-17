@@ -1,0 +1,10 @@
+[
+  {
+    "id_course": 1,
+    "title": "Curso de Impresión 3D",
+    "image": "/img-course.webp",
+    "version": "Lite",
+    "cantstatus": 45,
+    "status": 2
+  }
+]

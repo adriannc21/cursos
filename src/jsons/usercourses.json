@@ -1,0 +1,50 @@
+[
+  {
+    "image": "/img-course.webp",
+    "cantstatus": 20,
+    "title": "Curso Básico de Impresión 3D",
+    "status": 1
+  },
+  {
+    "image": "/img-course.webp",
+    "cantstatus": 100,
+    "title": "Modelado 3D con Fusion 360",
+    "status": 3
+  },
+  {
+    "image": "/img-course.webp",
+    "cantstatus": 45,
+    "title": "Postprocesado y Acabado de Piezas",
+    "status": 2
+  },
+  {
+    "image": "/img-course.webp",
+    "cantstatus": 70,
+    "title": "Mantenimiento de Impresoras 3D FDM",
+    "status": 2
+  },
+  {
+    "image": "/img-course.webp",
+    "cantstatus": 0,
+    "title": "Introducción al Diseño Paramétrico",
+    "status": 1
+  },
+  {
+    "image": "/img-course.webp",
+    "cantstatus": 100,
+    "title": "Impresión 3D con Resina (SLA)",
+    "status": 3
+  },
+  {
+    "image": "/img-course.webp",
+    "cantstatus": 30,
+    "title": "Optimización de Parámetros de Impresión",
+    "status": 2
+  },
+  {
+    "image": "/img-course.webp",
+    "cantstatus": 10,
+    "title": "Diseño para Impresión Funcional",
+    "status": 1
+  }
+]

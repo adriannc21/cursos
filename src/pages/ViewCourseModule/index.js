@@ -1,0 +1,1 @@
+export { default as ViewCourseModule } from "./ViewCourseModule";

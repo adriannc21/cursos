@@ -1,30 +1,167 @@
 [
   {
+    "id_course": 1,
     "image": "/img-course.webp",
-    "title": "Curso de Modelado 3D",
-    "description": "Aprende modelado desde cero con herramientas modernas.",
-    "price": "99.00",
-    "category": "Modelado 3D"
+    "title": "Curso Básico de Impresión 3D",
+    "description": "Introducción a la impresión 3D y manejo de impresoras básicas de filamento y de resina profesionales. Aprende sobre los distintos tipos de tecnologías de impresión y sus aplicaciones prácticas. Conoce cómo calibrar, operar y mantener tus equipos para obtener impresiones de calidad. Ideal para quienes desean comenzar desde cero o reforzar sus conocimientos en el mundo de la fabricación digital.",
+    "price": "75.00",
+    "category": "impresion3d",
+    "sessions": 7,
+    "teacher": "Jennifer Wong",
+    "url": "curso-basico-de-impresion-3d",
+    "trailer": "https://youtu.be/bdF68B_2PJE",
+    "modules": [
+      {
+        "title": "Intro",
+        "url": "intro",
+        "progress": 100,
+        "sessions": [
+          { "name": "Introducción", "duration": "3 min", "video": "https://youtu.be/bdF68B_2PJE" },
+          { "name": "Primera clase", "duration": "10 min", "video": "https://youtu.be/dREtPFx0a2M" },
+          { "name": "Segunda clase", "duration": "20 min", "video": "https://youtu.be/bdF68B_2PJE" }
+        ]
+      },
+      {
+        "title": "Parte 2",
+        "url": "parte2",
+        "progress": 80,
+        "sessions": [
+          { "name": "Fundamentos", "duration": "3 min", "video": "https://youtu.be/bdF68B_2PJE" },
+          { "name": "Fundamentos 2", "duration": "15 min", "video": "https://youtu.be/bdF68B_2PJE" }
+        ]
+      },
+      {
+        "title": "Parte 3",
+        "url": "parte3",
+        "progress": 60,
+        "sessions": [
+          { "name": "Introducción", "duration": "3 min", "video": "https://youtu.be/bdF68B_2PJE" },
+          { "name": "Primera clase", "duration": "10 min", "video": "https://youtu.be/bdF68B_2PJE" }
+        ]
+      },
+      {
+        "title": "Parte 4",
+        "url" : "parte4",
+        "progress": 40,
+        "sessions": [
+          { "name": "Fundamentos", "duration": "3 min", "video": "https://youtu.be/bdF68B_2PJE" },
+          { "name": "Fundamentos 2", "duration": "15 min", "video": "https://youtu.be/bdF68B_2PJE" }
+        ]
+      },
+      {
+        "title": "Parte 5",
+        "url" : "parte5",
+        "progress": 20,
+        "sessions": [
+          { "name": "Fundamentos", "duration": "3 min", "video": "https://youtu.be/bdF68B_2PJE" },
+          { "name": "Fundamentos 2", "duration": "15 min", "video": "https://youtu.be/bdF68B_2PJE" }
+        ]
+      },
+      {
+        "title": "Parte 6",
+        "url" : "parte6",
+        "progress": 40,
+        "sessions": [
+          { "name": "Fundamentos", "duration": "3 min", "video": "https://youtu.be/bdF68B_2PJE" },
+          { "name": "Fundamentos 2", "duration": "15 min", "video": "https://youtu.be/bdF68B_2PJE" }
+        ]
+      }
+    ]
   },
   {
+    "id_course": 2,
     "image": "/img-course.webp",
-    "title": "Curso de Modelado 3D",
-    "description": "Aprende modelado desde cero con herramientas modernas.",
+    "title": "Modelado 3D para Principiantes",
+    "description": "Aprende a crear modelos 3D con software intuitivo y moderno.",
     "price": "99.00",
-    "category": "Modelado 3D"
+    "category": "impresion3d",
+    "sessions": 3,
+    "teacher": "Jennifer Wong",
+    "url": "modelado-3d-para-principiantes",
+    "trailer": "https://youtu.be/bdF68B_2PJE",
+    "modules": [
+      {
+        "title": "Intro",
+        "url" : "intro",
+        "progress": 100,
+        "sessions": [
+          { "name": "Introducción", "duration": "3 min", "video": "https://youtu.be/bdF68B_2PJE" },
+          { "name": "Primera clase", "duration": "10 min", "video": "https://youtu.be/bdF68B_2PJE" }
+        ]
+      },
+      {
+        "title": "Parte 2",
+        "url" : "parte2",
+        "progress": 50,
+        "sessions": [
+          { "name": "Fundamentos", "duration": "3 min", "video": "https://youtu.be/bdF68B_2PJE" },
+          { "name": "Fundamentos 2", "duration": "15 min", "video": "https://youtu.be/bdF68B_2PJE" }
+        ]
+      }
+    ]
   },
   {
+    "id_course": 3,
     "image": "/img-course.webp",
-    "title": "Curso de Modelado 3D",
-    "description": "Aprende modelado desde cero con herramientas modernas.",
-    "price": "99.00",
-    "category": "Modelado 3D"
+    "title": "Diseño y Maquetación Web",
+    "description": "Crea páginas web responsivas usando HTML, CSS y JavaScript.",
+    "price": "120.00",
+    "category": "maquetacion",
+    "sessions": 2,
+    "teacher": "Jennifer Wong",
+    "url": "diseno-y-maquetacion-web",
+    "trailer": "https://youtu.be/bdF68B_2PJE",
+    "modules": [
+      {
+        "title": "Intro",
+        "url" : "intro",
+        "progress": 70,
+        "sessions": [
+          { "name": "Introducción", "duration": "3 min", "video": "https://youtu.be/bdF68B_2PJE" },
+          { "name": "Primera clase", "duration": "10 min", "video": "https://youtu.be/bdF68B_2PJE" }
+        ]
+      },
+      {
+        "title": "Parte 2",
+        "url" : "parte2",
+        "progress": 30,
+        "sessions": [
+          { "name": "Fundamentos", "duration": "3 min", "video": "https://youtu.be/bdF68B_2PJE" },
+          { "name": "Fundamentos 2", "duration": "15 min", "video": "https://youtu.be/bdF68B_2PJE" }
+        ]
+      }
+    ]
   },
   {
+    "id_course": 4,
     "image": "/img-course.webp",
-    "title": "Curso de Modelado 3D",
-    "description": "Aprende modelado desde cero con herramientas modernas.",
-    "price": "99.00",
-    "category": "Modelado 3D"
+    "title": "Diseño y Maquetación Web",
+    "description": "Crea páginas web responsivas usando HTML, CSS y JavaScript.",
+    "price": "120.00",
+    "category": "maquetacion",
+    "sessions": 2,
+    "teacher": "Jennifer Wong",
+    "url": "diseno-y-maquetacion-web",
+    "trailer": "https://youtu.be/bdF68B_2PJE",
+    "modules": [
+      {
+        "title": "Intro",
+        "url" : "intro",
+        "progress": 70,
+        "sessions": [
+          { "name": "Introducción", "duration": "3 min", "video": "https://youtu.be/bdF68B_2PJE" },
+          { "name": "Primera clase", "duration": "10 min", "video": "https://youtu.be/bdF68B_2PJE" }
+        ]
+      },
+      {
+        "title": "Parte 2",
+        "url" : "parte2",
+        "progress": 30,
+        "sessions": [
+          { "name": "Fundamentos", "duration": "3 min", "video": "https://youtu.be/bdF68B_2PJE" },
+          { "name": "Fundamentos 2", "duration": "15 min", "video": "https://youtu.be/bdF68B_2PJE" }
+        ]
+      }
+    ]
   }
 ]

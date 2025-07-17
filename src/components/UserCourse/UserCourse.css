@@ -1,0 +1,86 @@
+.component-usercourse {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  border-radius: 0.5rem;
+}
+.component-usercourse .pres {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  height: 12rem;
+  position: relative;
+  padding: 1rem;
+}
+.component-usercourse .pres img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.4);
+}
+.component-usercourse .pres p {
+  margin-top: auto;
+  color: var(--white);
+  padding-left: 0.5rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  z-index: 1;
+}
+.component-usercourse .pres .cantbar {
+  width: 100%;
+  height: 0.5rem;
+  border-radius: 1rem;
+  background-color: var(--bar);
+  z-index: 1;
+  overflow: hidden;
+}
+.component-usercourse .pres .cantbar span {
+  display: flex;
+  height: 100%;
+  background-color: var(--primary);
+  border-radius: 1rem 0 0 1rem;
+}
+.component-usercourse .title {
+  padding: 1rem 0 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+.component-usercourse .status {
+  padding: 0 0 1rem 0;
+  font-size: 0.8rem;
+}
+.component-usercourse .options {
+  display: flex;
+  margin-top: auto;
+  gap: 1rem;
+  align-items: stretch;
+}
+.component-usercourse .options .btn-view {
+  display: flex;
+  background-color: var(--primary);
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 2rem;
+  color: var(--white);
+  border-radius: 0.5rem;
+  transition: opacity 0.3s ease;
+  flex: 1;
+}
+.component-usercourse .options .btn-download{
+  display: flex;
+  width: 2.3rem;
+  border-radius: .5rem;
+  border: 2px solid var(--primary);
+  padding: .2rem;
+}
+.component-usercourse .options .btn-download img{
+  width: 100%;
+  height: 100%;
+  filter: invert(47%) sepia(76%) saturate(1669%) hue-rotate(344deg) brightness(103%) contrast(83%);
+}
