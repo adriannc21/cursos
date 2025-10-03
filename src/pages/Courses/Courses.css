@@ -36,6 +36,7 @@
   user-select: none;
   font-size: 0.9rem;
 }
+.page-courses .container .filters .list-filters .filter.active,
 .page-courses .container .filters .list-filters .filter:hover {
   background-color: var(--gray);
 }

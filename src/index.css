@@ -1,5 +1,6 @@
 :root {
   --primary: #ea7134;
+  --primarylite: #ffe8dd;
   --white: #ffffff;
   --gray: #f0f0f0;
   --grayborder: #dbdbdb;
@@ -46,7 +47,7 @@ body {
   margin: 0;
   padding: 0;
 }
-.con {
+.coverage {
   max-width: 90rem;
   margin: auto;
   padding: 0 1rem;

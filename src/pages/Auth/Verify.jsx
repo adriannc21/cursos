@@ -1,19 +1,21 @@
 import "./Auth.css";
 import { useParams, useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "@contexts/AuthContext";
 import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash, faCheck, faXmark, faCircleCheck, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
+import api from "@api/axios";
 
 function Verify() {
   const birthdayRef = useRef(null);
   const navigate = useNavigate();
-  const { i18n } = useTranslation();
-  const currentLanguage = i18n.language;
+  // const { i18n } = useTranslation();
   const { login } = useAuth();
   const { clave } = useParams();
+
   const [isVerified, setIsVerified] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [checkCompleted, setCheckCompleted] = useState(false);
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
@@ -35,7 +37,9 @@ function Verify() {
     hasNumber: false,
     match: false,
   });
+
   const selectedCountry = countries.find((c) => c.id === countryId);
+
   const getIcon = (condition) => (
     <FontAwesomeIcon icon={condition ? faCircleCheck : faCircleXmark} className={condition ? "valid" : "invalid"} />
   );
@@ -43,24 +47,13 @@ function Verify() {
   useEffect(() => {
     const confirmarToken = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/register-confirmation`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Api-Key": import.meta.env.VITE_API_KEY,
-          },
-          body: JSON.stringify({ token: clave }),
-        });
+        const { data } = await api.post("/auth/register-confirmation", { token: clave });
 
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data?.data?.message || "Token inválido");
-        }
+        if (!data.success) throw new Error(data?.data?.message || "Token inválido");
 
         setIsVerified(true);
       } catch (err) {
-        setErrorMessage(err.message || "Error desconocido");
+        setErrorMessage(err.response?.data?.data?.message || err.message || "Error desconocido");
         setIsVerified(false);
       } finally {
         setCheckCompleted(true);
@@ -69,14 +62,9 @@ function Verify() {
 
     const fetchCountries = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/general/countries`, {
-          headers: {
-            "Content-Type": "application/json",
-            "Api-Key": import.meta.env.VITE_API_KEY,
-          },
-        });
-        const json = await res.json();
-        setCountries(json.data);
+        const { data } = await api.get("/general/countries");
+        setCountries(data.data);
+        setCountryId(17);
       } catch (err) {
         console.error("Error cargando países:", err);
       }
@@ -85,6 +73,60 @@ function Verify() {
     confirmarToken();
     fetchCountries();
   }, [clave]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
+    const allValid = Object.values(passwordValidations).every(Boolean);
+    if (!allValid) {
+      setIsSubmitting(false);
+      return;
+    }
+
+    const birthDate = new Date(birthday + "T00:00:00");
+    const today = new Date();
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+
+    const isBirthdayValid = age >= 18;
+
+    if (!isBirthdayValid) {
+      birthdayRef.current.setCustomValidity("Debes tener al menos 18 años.");
+      birthdayRef.current.reportValidity();
+      setIsSubmitting(false);
+      return;
+    } else {
+      birthdayRef.current.setCustomValidity("");
+    }
+
+    try {
+      const { data } = await api.post("/auth/signup", {
+        token: clave,
+        first_name: name,
+        last_name: lastname,
+        country_id: countryId,
+        birthday,
+        password,
+      });
+
+      if (!data.success) throw new Error(data?.message || "Ocurrió un error en el registro.");
+
+      const token = data?.data?.access_token;
+      if (!token) throw new Error("Token no recibido");
+
+      await login(token);
+      navigate("/perfil");
+    } catch (err) {
+      alert(err.message || "Error al registrar.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="page-auth verify">
@@ -112,66 +154,7 @@ function Verify() {
         {isVerified && (
           <div className="register-verify">
             <p className="title-p">Completa tus datos</p>
-            <form
-              className="f"
-              onSubmit={async (e) => {
-                e.preventDefault();
-
-                const allValid = Object.values(passwordValidations).every(Boolean);
-                if (!allValid) return;
-
-                const birthDate = new Date(birthday + "T00:00:00");
-                const today = new Date();
-
-                let age = today.getFullYear() - birthDate.getFullYear();
-                const m = today.getMonth() - birthDate.getMonth();
-
-                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-                  age--;
-                }
-
-                const isBirthdayValid = age >= 18;
-
-                if (!isBirthdayValid) {
-                  birthdayRef.current.setCustomValidity("Debes tener al menos 18 años.");
-                  birthdayRef.current.reportValidity();
-                  return;
-                } else {
-                  birthdayRef.current.setCustomValidity("");
-                }
-
-                try {
-                  const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/signup`, {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                      "Api-Key": import.meta.env.VITE_API_KEY,
-                      Language: currentLanguage,
-                    },
-                    body: JSON.stringify({
-                      token: clave,
-                      first_name: name,
-                      last_name: lastname,
-                      country_id: countryId,
-                      birthday,
-                      password,
-                    }),
-                  });
-
-                  const data = await response.json();
-
-                  if (!response.ok) throw new Error(data?.message || "Ocurrió un error en el registro.");
-
-                  const token = data?.data?.access_token;
-                  if (!token) throw new Error("Token no recibido");
-
-                  await login(token); // ✅ login solo con token
-                  navigate("/perfil"); // ✅ redirección directa
-                } catch (err) {
-                  alert(err.message || "Error al registrar.");
-                }
-              }}
-            >
+            <form className="f" onSubmit={handleSubmit}>
               <div className={`cam name ${name ? "filled" : ""}`}>
                 <label htmlFor="name">Nombre</label>
                 <input
@@ -203,14 +186,21 @@ function Verify() {
                   isCountryFocused ? "focused" : ""
                 }`}
                 tabIndex={0}
-                onFocus={() => setIsCountryFocused(true)}
+                onFocus={() => {
+                  setIsCountryFocused(true);
+                  setDropdownOpen(true);
+                }}
                 onBlur={() => {
                   setTimeout(() => {
                     setIsCountryFocused(false);
                     setDropdownOpen(false);
                   }, 100);
                 }}
-                onClick={() => setDropdownOpen((prev) => !prev)}
+                onClick={() => {
+                  if (!dropdownOpen) {
+                    setDropdownOpen(true);
+                  }
+                }}
               >
                 <label htmlFor="countryid">País</label>
 
@@ -239,6 +229,7 @@ function Verify() {
                           onMouseDown={(e) => {
                             e.preventDefault();
                             setCountryId(country.id);
+                            setDropdownOpen(false);
                           }}
                         >
                           <img src={country.flag} alt={country.name} width={22} height={16} />
@@ -342,8 +333,8 @@ function Verify() {
                 <p className="req">{getIcon(passwordValidations.hasNumber)} Un número</p>
                 <p className="req">{getIcon(passwordValidations.match)} Las contraseñas coinciden</p>
               </div>
-              <button type="submit" className="btn-continue hover-op">
-                Continuar
+              <button type="submit" className="btn-continue hover-op" disabled={isSubmitting}>
+                {isSubmitting ? "Registrando..." : "Continuar"}
               </button>
             </form>
           </div>

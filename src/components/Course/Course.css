@@ -61,7 +61,7 @@
 .component-course .pres .title {
   margin-top: auto;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.1;
 }
 .component-course .pres .det {
@@ -69,12 +69,12 @@
 }
 .component-course .pres .price {
   margin-top: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   border-radius: 0.25rem;
   border: 1px solid var(--primary);
   width: fit-content;
   padding: 0.25rem 0.5rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 .component-course .description {
   font-size: 0.8rem;
@@ -125,7 +125,7 @@
   position: relative;
   flex-direction: column;
   background-color: var(--white);
-  width: 50rem;
+  width: 45rem;
   border-radius: 0.5rem;
 }
 .component-course-trailer .content .video-t {
@@ -136,7 +136,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--white);
+  background-color: var(--black);
 }
 .component-course-trailer .content .video-t iframe {
   width: 100%;
@@ -150,15 +150,13 @@
 }
 .component-course-trailer .content .info .redir {
   display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   cursor: pointer;
   font-weight: 600;
-  width: fit-content;
 }
 .component-course-trailer .content .info .redir .icon-redir {
   color: var(--primary);
+  margin-left: 0.5rem;
 }
 .component-course-trailer .content .info .teacher {
   font-size: 0.9rem;
@@ -275,9 +273,13 @@
   /* ≤ 576px  */
   .component-course .pres {
     padding: 0.5rem;
-    height: 9rem;
+    min-height: 9rem;
+    height: auto;
   }
   .component-course .pres .title {
+    font-size: 0.8rem;
+  }
+  .component-course .pres .price {
     font-size: 0.8rem;
   }
   .component-course .description {
@@ -331,5 +333,12 @@
   }
   .component-course-trailer .content .info .stats .level .max {
     height: 0.8rem;
+  }
+  .component-course .pres .trailer-view .icon-vt,
+  .component-course .pres .trailer-view p {
+    font-size: 0.8rem;
+  }
+  .component-course-trailer .out {
+    font-size: 0.8rem;
   }
 }

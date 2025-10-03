@@ -16,7 +16,7 @@
   background-repeat: no-repeat;
   z-index: 0;
 }
-.page-home .presentation .con {
+.page-home .presentation .coverage {
   position: relative;
   z-index: 1;
 }
@@ -212,7 +212,7 @@
   padding: 3rem 0;
   background-color: var(--primary);
 }
-.page-home .redir-ins .con {
+.page-home .redir-ins .coverage {
   display: flex;
   width: 50rem;
   align-items: center;
@@ -270,7 +270,7 @@
   .page-home .process .steps .step .flow br {
     display: none;
   }
-  .page-home .redir-ins .con {
+  .page-home .redir-ins .coverage {
     width: 100%;
     flex-direction: column;
     gap: 2rem;

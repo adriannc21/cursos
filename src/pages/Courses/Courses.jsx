@@ -1,14 +1,19 @@
 import "./Courses.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
-import ListShortCourses from "@components/ListShortCourses/ListShortCourses";
-
-import DataCourses from "@src/jsons/courses.json";
+import ListFullCourses from "@components/ListFullCourses/ListFullCourses";
+import api from "@api/axios";
 
 function Courses() {
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [courses, setCourses] = useState([]);
+  const [loadingCourses, setLoadingCourses] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const { language, country } = useSelector((state) => state.global);
 
   const categories = [
     "Impresión 3D",
@@ -17,15 +22,68 @@ function Courses() {
     "Corte y Grabado Láser",
     "Escáneres 3D",
     "Personalizado",
-    "impresion3d",
   ];
-  const filteredCourses = selectedCategory ? DataCourses.filter((c) => c.category === selectedCategory) : DataCourses;
-  const [showModal, setShowModal] = useState(false);
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+
+  const filteredCourses = selectedCategory
+    ? courses.filter((c) => c.category_name === selectedCategory)
+    : courses;
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      setLoadingCourses(true);
+      try {
+        const { data } = await api.get("/courses/list");
+
+        if (data?.success && data.data) {
+          // Aseguramos array
+          const rawCourses = Array.isArray(data.data) ? data.data : [data.data];
+
+          // Normalizamos full/lite -> duplicamos si es necesario
+          const normalized = rawCourses.flatMap((course) => {
+            const list = [];
+
+            if (course.full) {
+              list.push({
+                ...course,
+                version: "full",
+                price: course.full.price,
+                price_discount: course.full.discount,
+                duration: course.full.duration,
+              });
+            }
+
+            if (course.lite) {
+              list.push({
+                ...course,
+                version: "lite",
+                price: course.lite.price,
+                price_discount: course.lite.discount,
+                duration: course.lite.duration,
+              });
+            }
+
+            return list;
+          });
+
+          setCourses(normalized);
+        } else {
+          console.warn("⚠️ Respuesta inesperada de cursos:", data);
+          setCourses([]);
+        }
+      } catch (err) {
+        console.error("❌ Error al cargar cursos:", err);
+        setCourses([]);
+      } finally {
+        setLoadingCourses(false);
+      }
+    };
+
+    fetchCourses();
+  }, [language, country]);
 
   return (
     <div className="page-courses">
-      <div className="con">
+      <div className="coverage">
         <div className="container">
           <div className="filters">
             <div
@@ -36,11 +94,14 @@ function Courses() {
                 }
               }}
             >
-              {selectedCategory && DataCourses.some((c) => c.category === selectedCategory)
+              {selectedCategory && courses.some((c) => c.category_name === selectedCategory)
                 ? selectedCategory
                 : "Filtrar resultados"}
               <span className="act">
-                <FontAwesomeIcon className={`icon-down ${mobileFiltersOpen ? "rotate-up" : ""}`} icon={faChevronDown} />
+                <FontAwesomeIcon
+                  className={`icon-down ${mobileFiltersOpen ? "rotate-up" : ""}`}
+                  icon={faChevronDown}
+                />
               </span>
             </div>
 
@@ -53,28 +114,40 @@ function Courses() {
                     if (selectedCategory === category) {
                       setSelectedCategory(null);
                     } else {
-                      const hasCourses = DataCourses.some((c) => c.category === category);
+                      const hasCourses = courses.some((c) => c.category_name === category);
                       if (!hasCourses) {
                         setShowModal(true);
                       } else {
                         setSelectedCategory(category);
                       }
                     }
+
                     if (window.innerWidth <= 768) {
                       setMobileFiltersOpen(false);
                     }
                   }}
                 >
                   {category}
-                  {selectedCategory === category && <FontAwesomeIcon icon={faCheck} className="icon-check" />}
+                  {selectedCategory === category && (
+                    <FontAwesomeIcon icon={faCheck} className="icon-check" />
+                  )}
                 </div>
               ))}
             </div>
           </div>
+
           <div className="courses">
-            <p className="title-info">{selectedCategory ? `Cursos de ${selectedCategory}` : "Todos los Cursos"}</p>
-            <ListShortCourses courses={filteredCourses} variant={3} />
+            <p className="title-info">
+              {selectedCategory ? `Cursos de ${selectedCategory}` : "Todos los Cursos"}
+            </p>
+
+            {!loadingCourses ? (
+              <ListFullCourses courses={filteredCourses} />
+            ) : (
+              <p>Cargando cursos...</p>
+            )}
           </div>
+
           {showModal && (
             <div className="modal-nr" onClick={() => setShowModal(false)}>
               <div className="modal" onClick={(e) => e.stopPropagation()}>

@@ -1,18 +1,24 @@
-import UserCourse from "@components/UserCourse/UserCourse";
 import "./ListUserCourses.css";
+import UserCourse from "@components/UserCourse/UserCourse";
 
-function ListUserCourses({ usercourses }) {
+function ListUserCourses({ usercourses, errorMessage }) {
   return (
-    <div className="listusercourses">
-      {usercourses.map((usercourse, index) => (
-        <UserCourse
-          key={index}
-          image={usercourse.image}
-          cantstatus={usercourse.cantstatus}
-          title={usercourse.title}
-          status={usercourse.status}
-        />
-      ))}
+    <div className="component-listusercourses">
+      {usercourses.length === 0 ? (
+        <p className="no-courses">{errorMessage || "No tienes cursos disponibles"}</p>
+      ) : (
+        usercourses.map((course) => (
+          <UserCourse
+            key={course.uuid}
+            image={course.thumbnail}
+            cantstatus={parseInt(course.progress)}
+            title={course.title}
+            status={course.state}
+            slug={course.slug}
+            lite={course.lite}
+          />
+        ))
+      )}
     </div>
   );
 }

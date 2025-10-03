@@ -1,0 +1,39 @@
+.component-listfullcourses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.component-listfullcourses > * {
+  flex: 0 0 calc((100% - 3 * 2rem) / 4);
+}
+
+@media only screen and (max-width: 75rem) {
+  /* ≤ 1200px */
+  .component-listfullcourses {
+    gap: 1rem;
+  }
+
+  .component-listfullcourses > * {
+    flex: 0 0 calc((100% - 3 * 1rem) / 4);
+  }
+}
+
+@media only screen and (max-width: 62rem) {
+  /* ≤ 992px */
+  .component-listfullcourses > * {
+    flex: 0 0 calc((100% - 2 * 1rem) / 3);
+  }
+}
+
+@media only screen and (max-width: 48rem) {
+  /* ≤ 768px */
+  .component-listfullcourses > * {
+    flex: 0 0 calc((100% - 1 * 1rem) / 2);
+  }
+}
+
+@media only screen and (max-width: 36rem) {
+  /* ≤ 576px */
+
+}

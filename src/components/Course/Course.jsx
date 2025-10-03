@@ -2,12 +2,13 @@ import "./Course.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faXmark, faUser, faClock, faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faXmark, faClock, faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
+import api from "@api/axios";
 
 function Course({
+  uuid,
   title,
-  trailer_url,
   thumbnail,
   price,
   price_discount,
@@ -16,31 +17,44 @@ function Course({
   slug,
   teacher_name,
   category_name,
-  total_sells,
-  full,
+  version,
 }) {
   const navigate = useNavigate();
   const [showFullscreen, setShowFullscreen] = useState(false);
-  const [videoLoading, setVideoLoading] = useState(true);
+  const [videoSrc, setVideoSrc] = useState(null);
+  const [hasFetched, setHasFetched] = useState(false);
+  const displayLevel = version === "lite" ? "Básico" : "Avanzado";
   const { t } = useTranslation();
+
+  const displayTitle = version === "lite" ? `${title} - Lite` : title;
+
   useEffect(() => {
-    if (showFullscreen) {
+    if (showFullscreen && uuid) {
       document.body.style.overflow = "hidden";
-      setVideoLoading(true);
+      setHasFetched(false);
+      api
+        .get(`/video/play/${uuid}`)
+        .then((res) => {
+          if (res.data.success && res.data.data?.url) {
+            setVideoSrc(res.data.data.url);
+          } else {
+            setVideoSrc(null);
+          }
+        })
+        .catch(() => setVideoSrc(null))
+        .finally(() => setHasFetched(true));
     } else {
       document.body.style.overflow = "";
     }
+
     return () => {
       document.body.style.overflow = "";
     };
-  }, [showFullscreen]);
+  }, [showFullscreen, uuid]);
 
-  const handleNavigate = () => navigate(`/cursos/${slug}`);
-
-  const getYoutubeId = (url) =>
-    url?.includes("youtu.be/") ? url.split("youtu.be/")[1] : url?.split("v=")[1]?.split("&")[0] ?? "";
-
-  const iframeSrc = trailer_url ? `https://www.youtube.com/embed/${getYoutubeId(trailer_url)}?autoplay=1&mute=1` : null;
+  const handleNavigate = () => {
+    navigate(`/cursos/${slug}`, { state: { version } });
+  };
 
   const maxLen = 200;
   const isLong = description.length > maxLen;
@@ -51,10 +65,6 @@ function Course({
         .replace(/\s+\S*$/, "") + " ..."
     : description;
 
-  const levelText = full ? "Nivel Avanzado" : "Nivel Básico";
-  const courseType = full ? "Full" : "Lite";
-  const displayTitle = `${title} - ${courseType}`;
-
   return (
     <>
       <div className="component-course">
@@ -63,15 +73,17 @@ function Course({
             <FontAwesomeIcon className="icon-vt" icon={faEye} />
             <p>{t("home_course.view_trailer")}</p>
           </div>
-          <img src={thumbnail} alt={title} width="400" height="225" className="course-image" />
+          <img src={thumbnail} alt={displayTitle} width="400" height="225" className="course-image" />
           <p className="title">{displayTitle}</p>
           <p className="det">
             {t("home_course.category")}: {category_name}
           </p>
-          <p className="price">{price_discount || price}</p>
+          <p className="price">{price}</p>
         </div>
         <p className="description">{shortDesc}</p>
-        <button className="btn-buy hover-op">{t("home_course.buy")}</button>
+        <button className="btn-buy hover-op" onClick={handleNavigate}>
+          {t("home_course.buy")}
+        </button>
       </div>
 
       {showFullscreen && (
@@ -82,25 +94,18 @@ function Course({
               <FontAwesomeIcon icon={faXmark} />
             </button>
             <div className="video-t">
-              {iframeSrc ? (
-                <>
-                  {videoLoading && <div className="loader" />}
-                  <iframe
-                    src={iframeSrc}
-                    allowFullScreen
-                    onLoad={() => setVideoLoading(false)}
-                    style={{ display: videoLoading ? "none" : "flex" }}
-                  />
-                </>
-              ) : (
+              {hasFetched && videoSrc ? (
+                <iframe src={videoSrc} allow="encrypted-media" allowFullScreen className="course-iframe" />
+              ) : hasFetched && !videoSrc ? (
                 <p>{t("home_course.trailer_notfound")}</p>
-              )}
+              ) : null}
             </div>
 
             <div className="info">
               <div className="redir" onClick={handleNavigate}>
-                <p>{displayTitle}</p>
-                <FontAwesomeIcon className="icon-redir" icon={faArrowUpRightFromSquare} />
+                <p>
+                  {displayTitle} <FontAwesomeIcon className="icon-redir" icon={faArrowUpRightFromSquare} />
+                </p>
               </div>
               <p className="teacher">
                 {t("home_course.by_course")} {teacher_name}
@@ -110,17 +115,13 @@ function Course({
                   <FontAwesomeIcon className="icon" icon={faClock} />
                   <p className="val">{duration || "00:00"}</p>
                 </div>
-                <div className="users">
-                  <FontAwesomeIcon className="icon" icon={faUser} />
-                  <p className="val">{total_sells}</p>
-                </div>
                 <div className="level">
                   <div className="levels">
                     <span className="basic"></span>
                     <span className="inter"></span>
                     <span className="max"></span>
                   </div>
-                  <p className="val">{levelText}</p>
+                  <p className="val">{displayLevel}</p>
                 </div>
               </div>
               <span className="line"></span>
@@ -137,7 +138,9 @@ function Course({
                   <p>{price_discount}</p>
                   <span>{price}</span>
                 </div>
-                <button className="btn-buy">{t("home_course.buy_now")}</button>
+                <button className="btn-buy hover-op" onClick={handleNavigate}>
+                  Ver detalles
+                </button>
               </div>
             </div>
           </div>

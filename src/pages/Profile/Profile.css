@@ -17,13 +17,14 @@
   gap: 2rem;
   position: relative;
 }
-.page-profile .profile-container .info .btn-edt{
+.page-profile .profile-container .info .btn-edt {
   position: absolute;
   top: 1rem;
   right: 1rem;
   font-size: 1.5rem;
   cursor: pointer;
   color: var(--primary);
+  display: none;
 }
 .page-profile .profile-container .info .hi {
   display: flex;
@@ -51,11 +52,21 @@
 }
 .page-profile .profile-container .info .contacto .dato {
   display: flex;
-  font-size: .9rem;
+  align-items: center;
+  font-size: 0.9rem;
   gap: 0.5rem;
 }
-.page-profile .profile-container .info .contacto .dato .icon{
-  opacity: .7;
+.page-profile .profile-container .info .contacto .dato p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.page-profile .profile-container .info .contacto .dato .icon {
+  opacity: 0.7;
+}
+.page-profile .profile-container .info .contacto .dato .flag {
+  width: 1.5rem;
+  margin-right: 0.5rem;
 }
 .page-profile .profile-container .info .dash {
   display: flex;
@@ -74,18 +85,18 @@
   text-align: center;
   box-shadow: 1px 2px 10px 2px #e7e7e7;
 }
-.page-profile .profile-container .info .dash .dato .clave{
-  font-size: .9rem;
+.page-profile .profile-container .info .dash .dato .clave {
+  font-size: 0.9rem;
   color: gray;
 }
-.page-profile .profile-container .info .dash .dato .valor{
+.page-profile .profile-container .info .dash .dato .valor {
   display: flex;
   align-items: center;
   font-size: 1.2rem;
   font-weight: 500;
-  gap: .5rem;
+  gap: 0.5rem;
   color: var(--black);
-  opacity: .7;
+  opacity: 0.7;
 }
 .page-profile .profile-container .courses {
   display: flex;
@@ -96,7 +107,30 @@
   overflow: hidden;
   padding: 2rem;
 }
-
+.page-profile .profile-container .courses .coupons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.page-profile .profile-container .courses .coupons .in-cuop {
+  border: 1px solid var(--grayborder);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  outline: none;
+  font-size: 0.9rem;
+}
+.page-profile .profile-container .courses .coupons .btn-coup {
+  background-color: var(--white);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.35s ease;
+}
+.page-profile .profile-container .courses .coupons .btn-coup:hover {
+  background-color: var(--primary);
+  color: var(--white);
+}
 .page-profile .profile-container .courses .filters {
   display: flex;
   border-bottom: 3px solid var(--grayborder);
@@ -131,5 +165,4 @@
 }
 .page-profile .profile-container .courses .list-courses {
   background-color: var(--white);
-  margin-top: 2rem;
 }

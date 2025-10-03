@@ -1,8 +1,8 @@
-.listusercourses {
+.component-listusercourses {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
 }
-.listusercourses > * {
+.component-listusercourses > * {
   flex: 0 0 calc((100% - 2 * 2rem) / 3);
 }

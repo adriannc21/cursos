@@ -1,13 +1,13 @@
 import Course from "@components/Course/Course";
-import "./ListShortCourses.css";
+import "./ListFullCourses.css";
 
-function ListShortCourses({ courses = [] }) {
+function ListFullCourses({ courses = [] }) {
   if (!Array.isArray(courses) || courses.length === 0) {
     return <p className="no-courses-msg">No hay cursos disponibles.</p>;
   }
 
   return (
-    <div className="component-listshortcourses">
+    <div className="component-listfullcourses">
       {courses.map((course, index) => (
         <Course
           key={index}
@@ -30,4 +30,4 @@ function ListShortCourses({ courses = [] }) {
   );
 }
 
-export default ListShortCourses;
+export default ListFullCourses;

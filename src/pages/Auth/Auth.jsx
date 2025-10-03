@@ -1,15 +1,13 @@
 import "./Auth.css";
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import { useTranslation } from "react-i18next";
 import { useAuth } from "@contexts/AuthContext";
+import api from "@api/axios";
 
 function Auth({ isLogin }) {
-  const { i18n } = useTranslation();
-  const currentLanguage = i18n.language;
   const navigate = useNavigate();
   const location = useLocation();
   const { login } = useAuth();
@@ -22,6 +20,7 @@ function Auth({ isLogin }) {
   const [isLoginView, setIsLoginView] = useState(isLogin);
   const [showError, setShowError] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [registerMessage, setRegisterMessage] = useState("");
 
   useEffect(() => {
     setIsLoginView(location.pathname === "/iniciar-sesion");
@@ -29,41 +28,30 @@ function Auth({ isLogin }) {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
+    setIsSubmitting(true);
     setShowError("");
 
     try {
-      const url = `${import.meta.env.VITE_API_URL}/auth/login`;
-      const headers = {
-        "Content-Type": "application/json",
-        "Api-Key": import.meta.env.VITE_API_KEY,
-        Language: currentLanguage,
-      };
-      const body = { email, password };
-
-      const response = await fetch(url, {
-        method: "POST",
-        headers,
-        body: JSON.stringify(body),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok || !data.success) {
+      const { data } = await api.post("/auth/login", { email, password }, { withCredentials: true });
+      if (!data.success) {
         throw new Error(data?.data?.message || "Error al iniciar sesión.");
       }
 
       const access_token = data?.data?.access_token;
       if (!access_token) throw new Error("Token inválido.");
 
-      const success = await login(access_token); // solo guarda y setea
+      const success = await login(access_token);
       if (success) {
         navigate("/perfil");
       } else {
         throw new Error("Error guardando el token.");
       }
     } catch (err) {
-      console.error("❌ ERROR login:", err);
-      setShowError(err.message);
+      const errorMessage = err.response?.data?.data?.message || err.message || "Error desconocido";
+      setShowError(errorMessage);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -71,24 +59,17 @@ function Auth({ isLogin }) {
     e.preventDefault();
     if (isSubmitting) return;
     setIsSubmitting(true);
+    setShowError("");
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Api-Key": import.meta.env.VITE_API_KEY,
-          Language: currentLanguage,
-        },
-        body: JSON.stringify({ email: regEmail }),
-      });
+      const { data } = await api.post("/auth/register", { email: regEmail });
 
-      const data = await response.json();
-      if (!response.ok) throw new Error(data?.data?.message || "Error al registrar");
+      if (!data.success) throw new Error(data?.data?.message || "Error al registrar");
 
+      setRegisterMessage(data.data.message || "Revisa tu correo");
       setShowModal(true);
     } catch (error) {
-      console.error("Error:", error.message);
+      setShowError(error.message);
     } finally {
       setIsSubmitting(false);
     }
@@ -97,12 +78,14 @@ function Auth({ isLogin }) {
   return (
     <div className="page-auth">
       <div className="auth-container">
-        {/* Login */}
         <div className={`login ${!isLoginView ? "no-visible" : ""}`}>
           <div className="container">
+            <Link to="/" className="btn home">
+              <img src="/logo-v1.svg" alt="" />
+            </Link>
             <h1 className="title">Inicio de Sesión</h1>
             <p className="flow-ini">Accede y sigue aprendiendo con beneficios exclusivos.</p>
-            <form onSubmit={handleLogin} className="f" noValidate>
+            <form onSubmit={handleLogin} className="f">
               <div className={`cam email ${email ? "filled" : ""}`}>
                 <label htmlFor="email">Email</label>
                 <input
@@ -137,9 +120,8 @@ function Auth({ isLogin }) {
               </div>
 
               {!!showError && <p className="messages">{showError}</p>}
-
-              <button type="submit" className="btn-login">
-                Iniciar Sesión
+              <button type="submit" className="btn-login" disabled={isSubmitting}>
+                {isSubmitting ? "Iniciando sesión..." : "Iniciar Sesión"}
               </button>
             </form>
 
@@ -152,27 +134,27 @@ function Auth({ isLogin }) {
           </div>
         </div>
 
-        {/* Register */}
         <div className={`register ${isLoginView ? "no-visible" : ""}`}>
           <div className="container">
             {showModal ? (
               <div className="confirmation-message">
-                <h1 className="title">Revisa tu correo</h1>
+                <h1 className="title">{registerMessage}</h1>
                 <div className="icon-email">
-                  <FontAwesomeIcon icon={faEnvelope} />
+                  <FontAwesomeIcon icon={faEnvelope} className="icon" />
                 </div>
                 <p className="flow-ini">
-                  Te hemos enviado un enlace para verificar tu cuenta. Por favor, revisa tu bandeja de entrada.
+                  Te hemos enviado un enlace para verificar tu cuenta. Por favor, revisa tu bandeja de entrada o carpeta
+                  de spam.
                 </p>
-                <button className="btn-return hover-op" onClick={() => setShowModal(false)}>
-                  Volver
-                </button>
               </div>
             ) : (
               <>
+                <Link to="/" className="btn home">
+                  <img src="/logo-v1.svg" alt="" />
+                </Link>
                 <h1 className="title">Crea una cuenta</h1>
                 <p className="flow-ini">Ingresa tu correo y te enviaremos un enlace para verificar tu cuenta.</p>
-                <form className="f" onSubmit={handleRegister} noValidate>
+                <form className="f" onSubmit={handleRegister}>
                   <div className={`cam email ${regEmail ? "filled" : ""}`}>
                     <label htmlFor="regEmail">Email</label>
                     <input

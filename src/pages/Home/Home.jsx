@@ -1,12 +1,14 @@
 import "./Home.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import CarruselTeachers from "@components/CarruselTeachers/CarruselTeachers";
 import ListShortCourses from "@components/ListShortCourses/ListShortCourses";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
+import api from "@api/axios";
+import { useSelector } from "react-redux";
 
 function Home() {
   const { t } = useTranslation();
@@ -16,6 +18,7 @@ function Home() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [loadingCourses, setLoadingCourses] = useState(true);
   const [loadingTeachers, setLoadingTeachers] = useState(true);
+  const { language, country } = useSelector((state) => state.global);
 
   const categories = Array.isArray(courses) ? [...new Set(courses.map((c) => c?.category_name).filter(Boolean))] : [];
 
@@ -37,14 +40,10 @@ function Home() {
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/teachers/list`, {
-          headers: { "Api-Key": import.meta.env.VITE_API_KEY },
-        });
-        const result = await res.json();
-        if (Array.isArray(result?.data)) {
-          setTeachers(result.data);
+        const { data } = await api.get("/teachers");
+        if (Array.isArray(data?.data)) {
+          setTeachers(data.data);
         } else {
-          console.warn("Datos de docentes no válidos:", result);
           setTeachers([]);
         }
       } catch (err) {
@@ -55,16 +54,62 @@ function Home() {
       }
     };
 
+    fetchTeachers();
+  }, [country, language]);
+
+  useEffect(() => {
     const fetchCourses = async () => {
+      setLoadingCourses(true);
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/courses/latest`, {
-          headers: { "Api-Key": import.meta.env.VITE_API_KEY },
-        });
-        const result = await res.json();
-        if (Array.isArray(result?.data)) {
-          setCourses(result.data);
+        const { data } = await api.get("/courses/list?limit=10");
+        if (Array.isArray(data?.data)) {
+          // Mapear para generar un curso por full y otro por lite si existe
+          const mappedCourses = data.data.flatMap((course) => {
+            const coursesArray = [];
+            if (course.full) {
+              coursesArray.push({
+                ...course,
+                price: course.full.price,
+                price_discount: course.full.discount,
+                duration: course.full.duration,
+                version: "full",
+              });
+            }
+            if (course.lite) {
+              coursesArray.push({
+                ...course,
+                price: course.lite.price,
+                price_discount: course.lite.discount,
+                duration: course.lite.duration,
+                version: "lite",
+              });
+            }
+            return coursesArray;
+          });
+          setCourses(mappedCourses);
+        } else if (data?.data?.uuid) {
+          const course = data.data;
+          const coursesArray = [];
+          if (course.full) {
+            coursesArray.push({
+              ...course,
+              price: course.full.price,
+              price_discount: course.full.discount,
+              duration: course.full.duration,
+              version: "full",
+            });
+          }
+          if (course.lite) {
+            coursesArray.push({
+              ...course,
+              price: course.lite.price,
+              price_discount: course.lite.discount,
+              duration: course.lite.duration,
+              version: "lite",
+            });
+          }
+          setCourses(coursesArray);
         } else {
-          console.warn("Datos de cursos no válidos:", result);
           setCourses([]);
         }
       } catch (err) {
@@ -75,15 +120,15 @@ function Home() {
       }
     };
 
-    fetchTeachers();
     fetchCourses();
-  }, []);
+  }, [country, language]);
 
   return (
     <div className="page-home">
       <Helmet>
         <link rel="preload" as="image" href="/fondo-home-com.webp" type="image/webp" />
       </Helmet>
+
       <div className="presentation">
         <img
           src="/fondo-home-com.webp"
@@ -93,7 +138,7 @@ function Home() {
           height="1080"
           fetchpriority="high"
         />
-        <div className="con">
+        <div className="coverage">
           <div className="flow">
             <h1>
               {t("home.home1_title_line1")}
@@ -115,47 +160,25 @@ function Home() {
       </div>
 
       <div className="process">
-        <div className="con">
+        <div className="coverage">
           <p className="subt1">{t("home.home2_title")}</p>
           <p className="subt2">{t("home.home2_subt")}</p>
           <div className="steps">
             <span className="line"></span>
 
-            <div className="step">
-              <img src="/icons/icon-desktop-v2.webp" width="96" height="96" alt="icon" />
-              <p className="num">1</p>
-              <p className="flow">
-                <span>{t("home.home2_step1_line1")}</span>
-                <br />
-                {t("home.home2_step1_line2")}
-                <br />
-                {t("home.home2_step1_line3")}
-              </p>
-            </div>
-
-            <div className="step">
-              <img src="/icons/icon-form-v2.webp" width="96" height="96" alt="icon" />
-              <p className="num">2</p>
-              <p className="flow">
-                <span>{t("home.home2_step2_line1")}</span>
-                <br />
-                {t("home.home2_step2_line2")}
-                <br />
-                {t("home.home2_step2_line3")}
-              </p>
-            </div>
-
-            <div className="step">
-              <img src="/icons/icon-cards-v2.webp" width="96" height="96" alt="icon" />
-              <p className="num">3</p>
-              <p className="flow">
-                <span>{t("home.home2_step3_line1")}</span>
-                <br />
-                {t("home.home2_step3_line2")}
-                <br />
-                {t("home.home2_step3_line3")}
-              </p>
-            </div>
+            {[1, 2, 3].map((step, i) => (
+              <div className="step" key={step}>
+                <img src={`/icons/icon-${["desktop", "form", "cards"][i]}-v2.webp`} width="96" height="96" alt="icon" />
+                <p className="num">{step}</p>
+                <p className="flow">
+                  <span>{t(`home.home2_step${step}_line1`)}</span>
+                  <br />
+                  {t(`home.home2_step${step}_line2`)}
+                  <br />
+                  {t(`home.home2_step${step}_line3`)}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -165,7 +188,7 @@ function Home() {
       </div>
 
       <div className="available-courses">
-        <div className="con">
+        <div className="coverage">
           <div className="filter">
             <div className="tit">
               <FontAwesomeIcon className="icon-right" icon={faChevronRight} />
@@ -174,12 +197,12 @@ function Home() {
               </p>
             </div>
 
-            <div className="categories">
-              <p className={`btn-fil ${!selectedCategory ? "selected" : ""}`} onClick={() => handleFilterClick("")}>
-                {t("home.home3_all")}
-              </p>
-              {categories.length > 0 &&
-                categories.map((cat) => (
+            {categories.length >= 2 && (
+              <div className="categories">
+                <p className={`btn-fil ${!selectedCategory ? "selected" : ""}`} onClick={() => handleFilterClick("")}>
+                  {t("home.home3_all")}
+                </p>
+                {categories.map((cat) => (
                   <p
                     key={cat}
                     className={`btn-fil ${selectedCategory === cat ? "selected" : ""}`}
@@ -188,7 +211,8 @@ function Home() {
                     {cat}
                   </p>
                 ))}
-            </div>
+              </div>
+            )}
           </div>
 
           <div className={`list ${isFading ? "fade-out" : ""}`}>
@@ -206,7 +230,7 @@ function Home() {
       </div>
 
       <div className="list-teachers">
-        <div className="con">
+        <div className="coverage">
           <div className="title">
             <FontAwesomeIcon className="icon-right" icon={faChevronRight} />
             <p>
@@ -229,9 +253,10 @@ function Home() {
       </div>
 
       <div className="redir-ins">
-        <div className="con">
+        <div className="coverage">
           <p className="flow">
-            {t("home.home5_cta_text_line1")} <br />
+            {t("home.home5_cta_text_line1")}
+            <br />
             {t("home.home5_cta_text_line2")}
           </p>
           <Link className="btn-redir" to="/iniciar-sesion">
